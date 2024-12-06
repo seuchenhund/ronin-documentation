@@ -140,6 +140,17 @@ const sidebars = {
             'apps/ronin-bridge/reference/withdrawal-limits',
           ]
         },
+        {
+          type: 'category',
+          label: 'Chainlink CCIP Bridge',
+          link: {
+            type: 'doc',
+            id: 'apps/ccip-bridge/overview', 
+          },
+          items: [
+            'apps/ccip-bridge/guides/smart-contract-requirements',
+          ]
+        },
         // Katana
         {
           type: 'category',
