@@ -26,7 +26,7 @@ The token's smart contract must meet minimum requirements to integrate with CCIP
   * **burn(uint256 amount)** / **burn(address account, uint256 amount)**: This function is used to burn the amount of tokens on the source blockchain.
   * **decimals()**: Returns the token's number of decimals.
 * On the source and destination blockchains, the token contract must support granting **mint and burn** permissions. The token issuers or another role (such as the token administrator) will grant these permissions to the token pool.
-### Lock & Mint Requirements:
+### Lock & Mint Requirements
 * The token smart contract must have the following function:
   * **decimals()**: Returns the token's number of decimals.
 * On the destination blockchain, The token contract must support granting mint and burn permissions described above. The token issuers or another role (such as the token administrator) will grant these permissions to the token pool.
