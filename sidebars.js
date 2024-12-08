@@ -151,6 +151,8 @@ const sidebars = {
           items: [
             // Transfer ERC-20 tokens
             'apps/ccip-bridge/guides/transfer-token',
+            // Learn the token requirements to integrate with CCIP
+            'apps/ccip-bridge/guides/smart-contract-requirements',
           ],
         },
         // Katana
