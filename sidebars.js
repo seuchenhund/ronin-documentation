@@ -91,7 +91,7 @@ const sidebars = {
           label: 'Ronin Name Service',
           link: {
             type: 'doc',
-            id: 'apps/rns/overview', 
+            id: 'apps/rns/overview',
           },
           items: [
             {
@@ -125,7 +125,7 @@ const sidebars = {
           label: 'Ronin Bridge',
           link: {
             type: 'doc',
-            id: 'apps/ronin-bridge/overview', 
+            id: 'apps/ronin-bridge/overview',
           },
           items: [
             // Deposit ERC-20 tokens
@@ -138,7 +138,22 @@ const sidebars = {
             'apps/ronin-bridge/guides/withdraw-nft',
             // Token withdrawal limits
             'apps/ronin-bridge/reference/withdrawal-limits',
-          ]
+          ],
+        },
+        // CCIP Bridge
+        {
+          type: 'category',
+          label: 'CCIP Bridge',
+          link: {
+            type: 'doc',
+            id: 'apps/ccip-bridge/overview',
+          },
+          items: [
+            // Transfer ERC-20 tokens
+            'apps/ccip-bridge/guides/transfer-token',
+            // Learn the token requirements to integrate with CCIP
+            'apps/ccip-bridge/guides/smart-contract-requirements',
+          ],
         },
         // Katana
         {
@@ -146,7 +161,7 @@ const sidebars = {
           label: 'Katana',
           link: {
             type: 'doc',
-            id: 'apps/katana/overview', 
+            id: 'apps/katana/overview',
           },
           items: [
             // Swap tokens
@@ -158,7 +173,7 @@ const sidebars = {
               link: {
                 type: 'generated-index',
                 description: 'Guides for creating and managing liquidity pools.',
-                slug: 'apps/katana/pools'
+                slug: 'apps/katana/pools',
               },
               items: [
                 // Create a liquidity pool
@@ -205,12 +220,9 @@ const sidebars = {
       link: {
         type: 'generated-index',
         slug: '/rpc',
-        description: 'Guides for setting up and using an RPC node.',        
+        description: 'Guides for setting up and using an RPC node.',
       },
-      items: [
-        'rpc/mainnet-rpc',
-        'rpc/testnet-rpc',
-      ],
+      items: ['rpc/mainnet-rpc', 'rpc/testnet-rpc'],
     },
     // Delegators
     {
@@ -218,7 +230,7 @@ const sidebars = {
       label: 'Delegators',
       link: {
         type: 'doc',
-        id: 'delegators/index',        
+        id: 'delegators/index',
       },
       items: [
         // Stake RON
@@ -239,7 +251,7 @@ const sidebars = {
       label: 'Validators',
       link: {
         type: 'doc',
-        id: 'validators/index',        
+        id: 'validators/index',
       },
       items: [
         {
@@ -247,7 +259,7 @@ const sidebars = {
           label: 'Setup',
           link: {
             type: 'doc',
-            id: 'validators/setup/overview',   
+            id: 'validators/setup/overview',
           },
           items: [
             {
@@ -256,7 +268,7 @@ const sidebars = {
               link: {
                 type: 'generated-index',
                 slug: '/validators/setup/mainnet',
-                description: 'Node installation guides for the Ronin mainnet.'
+                description: 'Node installation guides for the Ronin mainnet.',
               },
               items: [
                 // Run a validator and bridge together
@@ -321,8 +333,9 @@ const sidebars = {
           label: 'Manage validator account',
           link: {
             type: 'generated-index',
-            title: 'Manage your validator account', 
-            description: 'Guides for increasing or withdrawing your stake, claiming rewards, and managing your validator account.',
+            title: 'Manage your validator account',
+            description:
+              'Guides for increasing or withdrawing your stake, claiming rewards, and managing your validator account.',
             slug: '/validators/manage',
           },
           items: [
@@ -362,7 +375,7 @@ const sidebars = {
           label: 'Governance',
           link: {
             type: 'doc',
-            id: 'validators/governance/overview',        
+            id: 'validators/governance/overview',
           },
           items: [
             // Create and vote on proposals
@@ -378,7 +391,7 @@ const sidebars = {
       label: 'Bridge operators',
       link: {
         type: 'doc',
-        id: 'bridge-operators/index',   
+        id: 'bridge-operators/index',
       },
       items: [
         {
@@ -386,12 +399,9 @@ const sidebars = {
           label: 'Setup',
           link: {
             type: 'doc',
-            id: 'bridge-operators/setup/overview',   
+            id: 'bridge-operators/setup/overview',
           },
-          items: [
-            'bridge-operators/setup/run-bridge',
-            'bridge-operators/setup/upgrade-bridge',
-          ],
+          items: ['bridge-operators/setup/run-bridge', 'bridge-operators/setup/upgrade-bridge'],
         },
         // Slashing
         'bridge-operators/slashing',
@@ -401,7 +411,7 @@ const sidebars = {
           label: 'Governance',
           link: {
             type: 'doc',
-            id: 'bridge-operators/governance/overview',        
+            id: 'bridge-operators/governance/overview',
           },
           items: [
             // Create and vote on proposals
