@@ -297,7 +297,7 @@ const sidebars = {
               ],
             },
             // Become a validator
-            "protocol/validators/onboarding/become-validator",
+            "protocol/validators/become-validator",
             // Manage your account
             {
               type: "category",
@@ -354,7 +354,7 @@ const sidebars = {
               ],
             },
             // FAQ
-            "protocol/validators/validator-faq",
+            "protocol/validators/faq",
           ],
         },
         // Delegators
@@ -367,15 +367,15 @@ const sidebars = {
           },
           items: [
             // Stake RON
-            "protocol/delegators/onboarding/become-delegator",
+            "protocol/delegators/become-delegator",
             // Manage your stake
-            "protocol/delegators/manage/stake",
+            "protocol/delegators/stake",
             // Claim or restake your rewards
-            "protocol/delegators/manage/claim-rewards",
+            "protocol/delegators/claim-rewards",
             // Track your validators
-            "protocol/delegators/manage/validators",
+            "protocol/delegators/validators",
             // FAQ
-            "protocol/delegators/delegator-faq",
+            "protocol/delegators/faq",
           ],
         },
 
@@ -432,11 +432,11 @@ const sidebars = {
         "developers/network",
         {
           type: "category",
-          label: "Nodes",
+          label: "Node setup",
           link: {
             type: "generated-index",
             description: "A Ronin node is the building block of the Ronin network infrastructure. Nodes connect together to conduct consensus on transactions, maintain the ledger, and provide other useful functions.",
-            slug: "/nodes",
+            slug: "/developer/nodes",
           },
           items:[
             "developers/nodes/mainnet",

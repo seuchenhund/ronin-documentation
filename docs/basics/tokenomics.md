@@ -1,13 +1,12 @@
 ---
+title: Tokenomics
 description: RON token quick facts, distribution, and release information.
 ---
 
 import distribution from './assets/distribution.png';
 import totalSupply from './assets/total-supply.png';
 
-# Tokenomics
-
-### Ronin token - RON
+## Ronin token - RON
 
 RON is the ecosystem token of the Ronin blockchain. The RON token enables users to pay for transactions on Ronin, includes decentralized finance (DeFi) features like community governance, and utility via staking through validators to earn rewards.
 
