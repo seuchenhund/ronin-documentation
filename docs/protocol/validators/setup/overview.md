@@ -63,7 +63,7 @@ In a combined setup, the validator and the bridge are defined in the same `docke
 
 Follow this guide for a combined setup:
 <DocCardList items={[
-    findSidebarItem('/validators/setup/mainnet/run-combined'),
+    findSidebarItem('/protocol/validators/setup/mainnet/run-combined'),
     ]} />
 
 #### Standalone setup
@@ -74,6 +74,6 @@ In a standalone setup, the validator node and the bridge node are defined in two
 
 Follow these guides for a standalone setup:
 <DocCardList items={[
-    findSidebarItem('/validators/setup/mainnet/run-validator'),
-    findSidebarItem('/bridge-operators/setup/run-bridge'),
+    findSidebarItem('/protocol/validators/setup/mainnet/run-validator'),
+    findSidebarItem('/protocol/bridge-operators/setup/run-bridge'),
     ]} />

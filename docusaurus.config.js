@@ -145,40 +145,10 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          // Get started
-          {
-            label: 'Get started',
-            to: '/get-started',
-          },
-          // Basics
-          {
-            label: 'Basics',
-            to: 'basics',
-          },
           {
             label: 'Whitepaper',
             to: '/basics/white-paper',
             target: '_blank',
-          },
-          // Apps
-          {
-            label: 'dApps',
-            to: 'apps',
-          },
-          // Delegators
-          {
-            label: 'Delegators',
-            to: 'delegators',
-          },
-          // Validators
-          {
-            label: 'Validators',
-            to: 'validators',
-          },
-          // Bridge operators
-          {
-            label: 'Bridge operators',
-            to: 'bridge-operators',
           },
           // Blog
           {

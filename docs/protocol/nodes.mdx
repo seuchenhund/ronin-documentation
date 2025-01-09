@@ -6,8 +6,6 @@ title: Nodes
 import DocCardList from '@theme/DocCardList'; 
 import {findSidebarItem} from '@site/src/sidebarUtils';
 
-## Overview
-
 There are two types of nodes on Ronin:
 
 * Ronin node:
@@ -37,20 +35,16 @@ A validator node starts its life as a full node, but has also “registered” i
 ### Run a validator node
 
 <DocCardList items={[
-    findSidebarItem('/validators/setup/mainnet/run-validator'),
-    findSidebarItem('/validators/setup/mainnet/run-combined'),
-    findSidebarItem('/validators/setup/mainnet/run-archive'),
-    findSidebarItem('/validators/setup/testnet/run-combined'),
-    findSidebarItem('/validators/setup/testnet/run-archive'),
-    findSidebarItem('/rpc/mainnet-rpc'),
-    findSidebarItem('/rpc/testnet-rpc'),
+    findSidebarItem('/protocol/validators/setup/mainnet/run-validator'),
+    findSidebarItem('/protocol/validators/setup/mainnet/run-combined'),
+    findSidebarItem('/protocol/validators/setup/testnet/run-combined'),
     ]} />
 
 ### Run an RPC node
 
 <DocCardList items={[
-    findSidebarItem('/rpc/mainnet-rpc'),
-    findSidebarItem('/rpc/testnet-rpc'),
+    findSidebarItem('/developers/nodes/mainnet'),
+    findSidebarItem('/developers/nodes/testnet'),
     ]} />
 
 ## What is a bridge node?
@@ -60,6 +54,6 @@ A *bridge node* ([GitHub](https://github.com/axieinfinity/bridge-v2)) is a type 
 ### Run a bridge node
 
 <DocCardList items={[
-    findSidebarItem('/bridge-operators/setup/run-bridge'),
-    findSidebarItem('/bridge-operators/setup/upgrade-bridge'),
+    findSidebarItem('/protocol/bridge-operators/setup/run-bridge'),
+    findSidebarItem('/protocol/bridge-operators/setup/upgrade-bridge'),
     ]} />
