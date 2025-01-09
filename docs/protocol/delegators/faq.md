@@ -11,15 +11,15 @@ Frequently asked questions for those who stake RON as delegators.
 
 ### 1. What if my delegated validator is slashed? {#1}
 
-While your validator is punished through [slashing](./../validators/slashing.mdx), you don't receive staking rewards, but your stake is not affected in any way.
+While your validator is punished through [slashing](/protocol/validators/slashing), you don't receive staking rewards, but your stake is not affected in any way.
 
 ### 2. Will my staking rewards automatically re-stake to my validator? {#2}
 
-You can manually [restake](./manage/claim-rewards.mdx#restake-your-rewards) the rewards to your favorite validator.
+You can manually [restake](./claim-rewards#restake-your-rewards) the rewards to your favorite validator.
 
 ### 3. Can I withdraw my stake whenever I want without any penalties? {#3}
 
-You can [withdraw your stake](./manage/stake.mdx#withdraw-stake) from one of your validators at any time without penalties, as long as it's been three or more days since you last staked with this validator.
+You can [withdraw your stake](./stake#withdraw-stake) from one of your validators at any time without penalties, as long as it's been three or more days since you last staked with this validator.
 
 ### 4. If I stake RON with a validator today, when will I receive the rewards? {#4}
 
@@ -31,7 +31,7 @@ Your RON stake with new validator will start producing rewards from around 00:00
 
 ### 6. How do I know if my validator is renouncing? {#6}
 
-You will receive a notification seven days before the validator's renunciation date. For more ways to keep track of your validators, see [Track validators](./manage/validators.mdx).
+You will receive a notification seven days before the validator's renunciation date. For more ways to keep track of your validators, see [Track validators](./validators).
 
 ### 7. How can I know if a validator is well-performing? {#7}
 

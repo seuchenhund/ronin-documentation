@@ -11,7 +11,7 @@ A delegator is an individual that delegates their stake to a validator and earns
 
 In Ronin, token holders can choose validators based on various factors such as the performance of the validators and their commission rate.
 
-After choosing the validators, the RON holders can follow the steps in [Stake RON](./../delegators/onboarding/become-delegator.mdx).
+After choosing the validators, the RON holders can follow the steps in [Stake RON](/protocol/delegators/become-delegator).
 
 ## Validator
 
@@ -24,7 +24,7 @@ A validator is an individual or institution that has the following responsibilit
 
 There are three categories of validators:
 
-* **Validator Candidate.** After registering as a validator on Ronin, you'll become a Validator Candidate and have a chance to be selected as a Standard Validator on the next day. To become a Validator Candidate, an individual or institution has to stake 250,000 RON. For instructions on becoming a candidate, see [Register as a validator](./../validators/onboarding/become-validator.mdx).
+* **Validator Candidate.** After registering as a validator on Ronin, you'll become a Validator Candidate and have a chance to be selected as a Standard Validator on the next day. To become a Validator Candidate, an individual or institution has to stake 250,000 RON. For instructions on becoming a candidate, see [Register as a validator](/protocol/validators/become-validator).
 * **Standard Validator.** Every day, 10 Validator Candidates with the highest amount staked are selected as Standard Validators. The system records your total staking amount at 00:00 UTC every day for the selection process.
 * **Governing Validator.** The validators chosen by the community and Sky Mavis to ensure network security. Governing Validators are validators by default, and they account for more than half of the total validator pool.
 
@@ -34,7 +34,7 @@ The validators are selected using Delegated Proof of Stake (DPoS). Beside the 12
 
 ### Slashing penalties for validators
 
-Validators who fail to fulfill their responsibilities are subject to [slashing](./../validators/slashing.mdx).
+Validators who fail to fulfill their responsibilities are subject to [slashing](/protocol/validators/slashing).
 
 ## Bridge operator
 
@@ -49,4 +49,4 @@ The initial set of bridge operators was defined according to [REP-0002](https://
 
 ### Slashing penalties for bridge operators
 
-Bridge operators who fail to fulfill their responsibilities are subject to [slashing](./../bridge-operators/slashing.md).
+Bridge operators who fail to fulfill their responsibilities are subject to [slashing](/protocol/bridge-operators/slashing).
