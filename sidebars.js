@@ -480,9 +480,15 @@ const sidebars = {
                 "developers/tools/oracles/pyth"
               ]
             },
+            "developers/tools/vrf",
             "developers/tools/delegation",
             "developers/tools/faucet",
           ]
+        },
+        {
+          type: 'link',
+          label: 'Mavis docs',
+          href: 'https://docs.skymavis.com/',
         }
       ],
     },
