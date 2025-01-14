@@ -52,78 +52,8 @@ const sidebars = {
             slug: "/apps",
           },
           items: [
-            // Token Revoke
-            "apps/revoke",
-            // RNS
-            {
-              type: "category",
-              label: "Ronin Name Service",
-              link: {
-                type: "doc",
-                id: "apps/rns/overview",
-              },
-              items: [
-                {
-                  type: "category",
-                  label: "Register an RNS name",
-                  link: {
-                    type: "generated-index",
-                    description: "Guides to register different categories of RNS names.",
-                    slug: "apps/rns/register",
-                  },
-                  items: [
-                    // Register a regular RNS name
-                    "apps/rns/guides/register/regular",
-                    // Buy an RNS name at auction
-                    "apps/rns/guides/register/auctioned",
-                    // Register a protected RNS name
-                    "apps/rns/guides/register/protected",
-                  ],
-                },
-                // Manage RNS names
-                "apps/rns/guides/manage",
-                // Trade RNS names
-                "apps/rns/guides/trade",
-                // RNS FAQ
-                "apps/rns/reference/faq",
-              ],
-            },
-            // Ronin Bridge
-            {
-              type: "category",
-              label: "Ronin Bridge",
-              link: {
-                type: "doc",
-                id: "apps/ronin-bridge/overview",
-              },
-              items: [
-                // Deposit ERC-20 tokens
-                "apps/ronin-bridge/guides/deposit-token",
-                // Withdraw ERC-20 tokens
-                "apps/ronin-bridge/guides/withdraw-token",
-                // Deposit NFTs
-                "apps/ronin-bridge/guides/deposit-nft",
-                // Withdraw NFTs
-                "apps/ronin-bridge/guides/withdraw-nft",
-                // Token withdrawal limits
-                "apps/ronin-bridge/reference/withdrawal-limits",
-              ],
-            },
-            // CCIP Bridge
-            {
-              type: "category",
-              label: "CCIP Bridge",
-              link: {
-                type: "doc",
-                id: "apps/ccip-bridge/overview",
-              },
-              items: [
-                // Transfer ERC-20 tokens
-                "apps/ccip-bridge/guides/transfer-token",
-                // Learn the token requirements to integrate with CCIP
-                "apps/ccip-bridge/guides/smart-contract-requirements",
-              ],
-            },
+            // RON Staking
+            "apps/ron-staking",
             // Katana
             {
               type: "category",
@@ -174,12 +104,82 @@ const sidebars = {
                 // },
               ],
             },
-            // Ronin Explorer
-            "apps/ronin-explorer",
-            // RON Staking
-            "apps/ron-staking",
             // Ronin Safe
             "apps/multisig",
+            // Ronin Bridge
+            {
+              type: "category",
+              label: "Ronin Bridge",
+              link: {
+                type: "doc",
+                id: "apps/ronin-bridge/overview",
+              },
+              items: [
+                // Deposit ERC-20 tokens
+                "apps/ronin-bridge/guides/deposit-token",
+                // Withdraw ERC-20 tokens
+                "apps/ronin-bridge/guides/withdraw-token",
+                // Deposit NFTs
+                "apps/ronin-bridge/guides/deposit-nft",
+                // Withdraw NFTs
+                "apps/ronin-bridge/guides/withdraw-nft",
+                // Token withdrawal limits
+                "apps/ronin-bridge/reference/withdrawal-limits",
+              ],
+            },
+            // CCIP Bridge
+            {
+              type: "category",
+              label: "CCIP Bridge",
+              link: {
+                type: "doc",
+                id: "apps/ccip-bridge/overview",
+              },
+              items: [
+                // Transfer ERC-20 tokens
+                "apps/ccip-bridge/guides/transfer-token",
+                // Learn the token requirements to integrate with CCIP
+                "apps/ccip-bridge/guides/smart-contract-requirements",
+              ],
+            },
+            // Ronin Explorer
+            "apps/ronin-explorer",
+            // Token Revoke
+            "apps/revoke",
+            // RNS
+            {
+              type: "category",
+              label: "Ronin Name Service",
+              link: {
+                type: "doc",
+                id: "apps/rns/overview",
+              },
+              items: [
+                {
+                  type: "category",
+                  label: "Register an RNS name",
+                  link: {
+                    type: "generated-index",
+                    description: "Guides to register different categories of RNS names.",
+                    slug: "apps/rns/register",
+                  },
+                  items: [
+                    // Register a regular RNS name
+                    "apps/rns/guides/register/regular",
+                    // Buy an RNS name at auction
+                    "apps/rns/guides/register/auctioned",
+                    // Register a protected RNS name
+                    "apps/rns/guides/register/protected",
+                  ],
+                },
+                // Manage RNS names
+                "apps/rns/guides/manage",
+                // Trade RNS names
+                "apps/rns/guides/trade",
+                // RNS FAQ
+                "apps/rns/reference/faq",
+              ],
+            },
           ],
         },
         // Community
@@ -425,8 +425,9 @@ const sidebars = {
       collapsed: false,
       collapsible: false,
       link: {
-        type: "doc",
-        id: "developers/network"
+        type: "generated-index",
+        description: "Build on Ronin.",
+        slug: "/developers",
       },
       items: [
         "developers/network",
@@ -436,7 +437,7 @@ const sidebars = {
           link: {
             type: "generated-index",
             description: "A Ronin node is the building block of the Ronin network infrastructure. Nodes connect together to conduct consensus on transactions, maintain the ledger, and provide other useful functions.",
-            slug: "/developer/nodes",
+            slug: "/developers/nodes",
           },
           items:[
             "developers/nodes/mainnet",

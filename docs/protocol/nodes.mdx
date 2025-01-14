@@ -6,15 +6,6 @@ title: Nodes
 import DocCardList from '@theme/DocCardList'; 
 import {findSidebarItem} from '@site/src/sidebarUtils';
 
-There are two types of nodes on Ronin:
-
-* Ronin node:
-  * Validator node
-  * Archive node
-  * RPC node
-* Bridge node
-
-The following section describes each type in detail.
 
 ## What is a Ronin node?
 
@@ -32,7 +23,7 @@ Validator and RPC nodes are considered *full* nodes—they store full blockchain
 
 A validator node starts its life as a full node, but has also “registered” itself to the network as a validator, which means that it may now accept RON token stake and potentially be included in the validator set that conduct network consensus.
 
-### Run a validator node
+## Run a validator node
 
 <DocCardList items={[
     findSidebarItem('/protocol/validators/setup/mainnet/run-validator'),
@@ -40,20 +31,10 @@ A validator node starts its life as a full node, but has also “registered” i
     findSidebarItem('/protocol/validators/setup/testnet/run-combined'),
     ]} />
 
-### Run an RPC node
+## Run an RPC node
 
 <DocCardList items={[
     findSidebarItem('/developers/nodes/mainnet'),
     findSidebarItem('/developers/nodes/testnet'),
     ]} />
 
-## What is a bridge node?
-
-A *bridge node* ([GitHub](https://github.com/axieinfinity/bridge-v2)) is a type of node used for acknowledging deposit and withdrawal events on Ronin Bridge—the blockchain bridge that facilitates asset transfers between Ronin and Ethereum.
-
-### Run a bridge node
-
-<DocCardList items={[
-    findSidebarItem('/protocol/bridge-operators/setup/run-bridge'),
-    findSidebarItem('/protocol/bridge-operators/setup/upgrade-bridge'),
-    ]} />
