@@ -31,7 +31,7 @@ const featureList = [
     title: 'Developers',
     Icon: DevelopersIcon,
     link: {
-      href: '/developers/network',
+      href: '/developers',
       title: 'Developers',
     },
     description: <>Start building on Ronin.</>,
