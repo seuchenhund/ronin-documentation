@@ -132,7 +132,7 @@ Now that you have set up the environment, you can deploy your smart contract on 
 1. To deploy your contract, run the following command:
 
    ```bash
-   yarn hardhat deploy --network saigon --gasprice 20000000000
+   yarn hardhat deploy --network saigon --gasprice 20000000000 --legacy
    ```
 
    Setting the `--gasprice` flag explicitly is required to work around the issue with the provider used by Hardhat ignoring the gas price set in `hardhat.config.js`. Make sure that you installed the required `hardhat-deploy` package in [Step 1](#step-1-install-hardhat-deploy).
