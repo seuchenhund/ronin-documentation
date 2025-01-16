@@ -1,6 +1,6 @@
 ---
-description: List of Ronin's security audit reports.
 title: Security audits
+description: List of Ronin's security audit reports.
 ---
 
 ## Ronin Bridge

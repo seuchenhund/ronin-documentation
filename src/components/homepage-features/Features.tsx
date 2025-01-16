@@ -3,10 +3,10 @@ import React from 'react'
 import { Card } from './Card'
 import BlogIcon from './blog.svg'
 import BoxTickIcon from './box-tick.svg'
-import CoinIcon from './coins.svg'
-import AppsIcon from './apps.svg'
+import ProtocolIcon from './protocol.svg'
+import DevelopersIcon from './developers.svg'
 import ListViewIcon from './list-view.svg'
-import SignDirectionIcon from './signs-direction.svg'
+import CoinsIcon from './coins.svg'
 
 const featureList = [
   {
@@ -19,19 +19,28 @@ const featureList = [
     description: <>Get familiar with the basics of the Ronin chain.</>,
   },
   {
-    title: 'dApps',
-    Icon: AppsIcon,
+    title: 'Protocol',
+    Icon: ProtocolIcon,
     link: {
       href: '/apps',
       title: 'dApps',
     },
-    description: <>Use the decentralized apps in the Ronin ecosystem.</>,
+    description: <>Details about the Ronin consensus protocol.</>,
+  },
+  {
+    title: 'Developers',
+    Icon: DevelopersIcon,
+    link: {
+      href: '/developers',
+      title: 'Developers',
+    },
+    description: <>Start building on Ronin.</>,
   },
   {
     title: 'Delegators',
-    Icon: CoinIcon,
+    Icon: CoinsIcon,
     link: {
-      href: '/delegators',
+      href: '/protocol/delegators',
       title: 'Delegators',
     },
     description: <>Stake your RON tokens to validators to earn rewards.</>,
@@ -41,17 +50,8 @@ const featureList = [
     Icon: BoxTickIcon,
     description: <>Run a validator node to earn rewards and secure the network.</>,
     link: {
-      href: '/validators',
+      href: '/protocol/validators',
       title: 'Validators',
-    },
-  },
-  {
-    title: 'Bridge operators',
-    Icon: SignDirectionIcon,
-    description: <>Run a bridge node to acknowledge deposit and withdrawal events and earn rewards.</>,
-    link: {
-      href: '/bridge-operators',
-      title: 'Bridge operators',
     },
   },
   {

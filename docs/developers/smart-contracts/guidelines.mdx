@@ -1,0 +1,159 @@
+---
+title: Smart contract guidelines
+description: Restrictions and recommendations for Ronin smart contract developers.
+---
+
+This page provides a list of guidelines for third-party developers looking to deploy smart contracts onto the Ronin chain.
+
+## Disclaimer
+
+These guidelines are provided to assure that the contracts developed by third parties will not abuse the system nor the Ronin chain. An approval granted by Ronin’s reviewers only states that the approved contract will not abuse the chain. The approval does not state that the contract is error-free or doesn't contain any logical or security flaws. The author of the contract is responsible for the contract's' behavior and is recommended to have their contract audited by themselves. Ronin hereby disclaims all liability to the maintainers or any third party related to any such contracts that may be included in or accompany the contracts.
+
+## Checklist
+
+The following is a checklist of essential requirements that contracts from third parties must meet for third-party developers' contracts:
+
+- Contract DOES NOT create new contracts.
+- Contract DOES NOT self-destruct.
+- Contract DOES NOT “returnbomb” the callee.
+- DO NOT use TransparentUpgradeableProxy with OpenZeppelin v5.x.x.
+- DO NOT use TransparentUpgradeableProxy with the openzeppelin-upgrades library.
+- DO verify the contract's source code after deployment.
+
+The following sections cover these restrictions and some recommendations in detail.
+
+## Restrictions
+
+To prevent unauthorized contract deployment onto the Ronin chain, the following usages SHOULD NOT occur in any contracts from third parties.
+
+### ❌ Contract creates other new contracts {#contract-creates-other-new-contracts}
+
+In general, the deployment of new contracts onto the Ronin network is restricted and approved by an allowlist mechanism which allows certain specified addresses to deploy new contracts. This prevents the network from being abused and containing many _spam_ contracts.
+
+Therefore, a contract on Ronin MUST NOT be able to create other contracts. The following sections demonstrate some examples of this behavior.
+
+If creation of other contracts within a contract is required due to the design or requirement of the product, such contract is reviewed by Sky Mavis manually with proper explanations from the requester.
+
+#### Solidity keywords
+
+##### `new` keyword
+
+The `new` keyword in Solidity is used to create a new instance of a smart contract.
+
+Example:
+
+```solidity title="Example" showLineNumbers
+contract ChildContract {}
+
+contract MomContract {
+  ChildContract public child;
+
+  constructor() {
+    child = new ChildContract();
+  }
+}
+```
+
+#### Assembly instructions
+
+| Instruction           | Explanation                                                                                                                                                |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `create(v, p, s)`     | Create a new contract with code `mem[p..(p+s))`, send `v` wei, and return the new address.                                                                 |
+| `create2(v, n, p, s)` | Create a new contract with code `mem[p..(p+s))` at address `keccak256(<address> . n . keccak256(mem[p..(p+s)))`, send `v` wei, and return the new address. |
+
+```solidity title=Example showLineNumbers
+contract Factory {
+    event Deployed(address addr, uint256 salt);
+
+    function getCreationBytecode(address _owner, uint _foo) public pure returns (bytes memory) {
+        bytes memory bytecode = type(Wallet).creationCode;
+        return abi.encodePacked(bytecode, abi.encode(_owner, _foo));
+    }
+
+    // Note: Call this function with bytecode from getCreationByteCode and a random salt
+    function deploy(bytes memory bytecode, uint _salt) public {
+        address addr;
+        assembly {
+            addr := create2(0, add(bytecode, 0x20), mload(bytecode), _salt)
+            if iszero(extcodesize(addr)) {
+                revert(0, 0)
+            }
+        }
+        emit Deployed(addr, _salt);
+    }
+}
+```
+
+### ❌ Contract has "selfdestruct" instruction {#contract-has-selfdestruct-instruction}
+
+The self-destruct function in Solidity allows a contract to be removed from the blockchain, freeing up storage and preventing it from consuming gas in the future. This function, however, can be misused by malicious actors to destroy a contract without permission, causing permanent loss of data and assets.
+
+```solidity title=Example showLineNumbers
+function destroy(address to) {
+  selfdestruct(to);
+}
+```
+
+### ❌ Contract "returnbombs" the callee {#contract-returnbombs-the-callee}
+
+A low-level solidity call will copy _any amount of bytes_ to local memory. When bytes are copied from `returndata` to memory, the [memory expansion cost](https://ethereum.stackexchange.com/questions/92546/what-is-expansion-cost) is paid. This means that when using a standard solidity call, the callee can _"returnbomb"_ the caller, imposing an arbitrary gas cost. Because this gas is paid _by the caller and in the caller's context_, it can cause the caller to run out of gas and halt execution.
+
+```solidity title="Example" showLineNumbers
+function exhaustivelyConsumeAllGas() external pure {
+  assembly {
+    return(0, 1000000)
+  }
+}
+```
+
+### ❌ Use of TransparentProxy with OpenZepplin v5.x.x {#use-of-transparentproxy-with-openzepplin-v5xx}
+
+On the deployment of the [TransparentUpgradeableProxy](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/8b4b7b8d041c62a84e2c23d7f6e1f0d9e0fc1f20/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#L79) in OpenZepplin v5.x.x, the constructor will auto-create a [ProxyAdmin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/8b4b7b8d041c62a84e2c23d7f6e1f0d9e0fc1f20/contracts/proxy/transparent/ProxyAdmin.sol#L13) contract, which later becomes the admin of the current proxy. Because the address of the proxy was not added to the allowlist previously, the deployment of the proxy will break.
+
+The deployer has no control to specify another admin address or change this behavior in this pattern.
+
+The Ronin team will not allowlist these proxy addresses.
+
+As a workaround, you can do the following:
+
+- Use a lower version of OpenZepplin’s TransparentUpgradeableProxy (lower than 5.0.0).
+- Use OpenZepplin’s UUPS or Beacon Proxy. **Note:** Adopt these proxy types only when you fully understand their behavior and do so at your own risk.
+
+### ❌ Use of TransparentProxy with openzeppelin-upgrades library {#use-of-transparentproxy-with-openzeppelin-upgrades-library}
+
+The [behavior](#use-of-transparentproxy-with-openzepplin-v5xx) of TransparentProxy v5 happens in the [openzeppelin-upgrades](https://github.com/OpenZeppelin/openzeppelin-upgrades) library as well. In the library’s factory, it invokes the mentioned process when [creating](https://github.com/OpenZeppelin/openzeppelin-upgrades/blob/4904c5be75c0cd8acfe9f0960aa250ce29348f92/packages/plugin-hardhat/src/utils/factories.ts#L18) the TransparentUpgradeableProxy.
+
+As a workaround, you can do the following:
+
+- Refrain from using the openzeppelin-upgrades library to control deployments, and use the [hardhat-deploy](https://github.com/wighawag/hardhat-deploy) library or native Hardhat’s deploy instead.
+- Use OpenZepplin’s UUPS or Beacon Proxy. **Note:** Adopt these proxy types only when you fully understand their behavior and do so at your own risk.
+
+## Recommendations
+
+This section introduces some best practices to prevent potential bugs that might happen in Solidity. The potential bugs include (1) out-of-gas transactions, and (2) security bugs.
+
+### ✅ Follow general best practices {#follow-general-best-practices}
+
+Refer to the [well-described collection from Consensys](https://consensys.github.io/smart-contract-best-practices/).
+
+### ✅ Do not allow uncontrolled size of dynamic arrays {#do-not-allow-uncontrolled-size-of-dynamic-arrays}
+
+Looping over a dynamic array without size restriction is dangerous because it might lead to out-of-gas transactions.
+
+```solidity title="Example" showLineNumbers
+address[] public users;
+
+function getRewardedUsers() external view returns (address[] memory) {
+  return users;
+}
+```
+
+### ✅ Keep Solidity version up to date {#keep-solidity-version-up-to-date}
+
+If your projects are newly developed and are not based on existing code, we recommend using the latest version of Solidity to for a fresh start. There are bugs found in both Solidity and EVM, some are considered critical. The [new patches in Solidity](https://etherscan.io/solcbuginfo) help cover these flaws.
+
+## Contract source code verification {#source-code-verification}
+
+Verifying a smart contract is a crucial step to ensure the integrity and security of the Ronin network. The verification involves inspecting the contract's source code to ensure that it is bug-free, secure, and will perform as expected.
+
+For instructions on verifying smart contracts, see [Verify a smart contract](./verify.mdx).

@@ -1,0 +1,21 @@
+---
+title: Overview
+description: A collection of Ronin oracles.
+---
+
+import DocCardList from '@theme/DocCardList'; 
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
+Oracles are critical components in the Ronin ecosystem that enable smart contracts to interact with data from the outside world. They serve as bridges between the blockchain and external data sources, providing trusted and verifiable information that smart contracts can use to execute logic.
+
+## Pyth Network
+
+The [Pyth Network](https://pyth.network/) is one of the largest first-party Oracle network, delivering real-time data across [a vast number of chains](https://docs.pyth.network/price-feeds/contract-addresses).
+
+The network comprises some of the world's [largest exchanges, market makers, and financial services providers](https://pyth.network/publishers). These publish proprietary data on-chain for aggregation and distribution to smart contract applications.
+
+<DocCardList items={[
+    findSidebarItem('/developers/tools/oracles/pyth'),
+    ]} />
+
+

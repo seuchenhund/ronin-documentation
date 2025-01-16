@@ -46,7 +46,7 @@ If you access CCIP Bridge on mobile, remember to import your Ethereum address to
 
    ![step_9](../assets/step_9.png)
 
-## Step 5: Excecute and receive the tokens in your  wallet
+## Step 5: Execute and receive the tokens in your  wallet
    Click “Transfer” button to execute the transaction 
 
    ![step_7](../assets/step_7.png)

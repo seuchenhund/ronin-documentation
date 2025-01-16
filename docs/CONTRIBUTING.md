@@ -228,9 +228,8 @@ After a PR is closed, your working branch is deleted.
 | ---------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `/docs/apps`         | Documentation for dApps within the Ronin ecosystem.                                                                                |
 | `/docs/basics`         | General information about Ronin.                                                                                |
-| `/docs/bridge-operators` | Documentation for bridge operators.                                                                               |
-| `/docs/delegators`     | Documentation for delegators.                                                                                   |
-| `/docs/validators`     | Documentation for validators.                                                                                   |
+| `/docs/protocol` | Documentation about the Ronin consensus protocol.                                                                               |
+| `/docs/developers`     | Documentation for developers.                                                                                   |
 
 ### Sidebar
 
@@ -307,7 +306,7 @@ that existing top-level category.
 Most top-level categories have an auto-generated layout with a brief
 introduction at the top and the list of doc cards that represent the
 categories and pages inside that top-level category. There are exceptions,
-however. For example, the [Validators](./validators/index.mdx) category is a
+however. For example, the [Validators](/protocol/validators) category is a
 manually written page, where doc cards are displayed using a custom helper,
 and organized into sections using headings.
 
@@ -452,10 +451,10 @@ the concepts covered in this topic.
 
 ##### Examples of explanation topics
 
-* [Slashing rules](./validators/slashing.mdx)
-* [Rewards](./basics/rewards.md)
-* [Nodes](./basics/nodes.mdx)
-* Explanation topics within another page: [Bailout](./validators/slashing.mdx#bailout)
+* [Slashing rules](/protocol/validators/slashing)
+* [Rewards](/basics/rewards)
+* [Nodes](/protocol/nodes)
+* Explanation topics within another page: [Bailout](/protocol/validators/slashing#bailout)
 
 #### How-to guide
 
@@ -475,7 +474,7 @@ A how-to guide works well when:
 
 ##### How-to guide template
 
-To write a task, use the [task](./basics/contribute/templates.md#task) template.
+To write a How-to guide, use the [How-to-guide](/basics/contribute/templates#how-to-guide) template.
 
 ##### How-to guide guidelines
 
@@ -521,12 +520,12 @@ this task and the concepts that it involves.
 
 ##### Examples of how-to guides
 
-* [Stake RON](./delegators/onboarding/become-delegator.mdx)
-* [Run a validator node](./validators/setup/mainnet/run-validator.mdx)
-* [Claim rewards](./validators/manage/claim-rewards.mdx)
+* [Stake RON](/protocol/delegators/become-delegator)
+* [Run a validator node](/protocol/validators/setup/mainnet/run-validator)
+* [Claim rewards](/protocol/validators/manage/claim-rewards)
 * Task topics within other pages:
-  * [Check your credit score](./validators/slashing.mdx#check-your-credit-score)
-  * [Use secure communication](./validators/setup/security.md#use-secure-communication)
+  * [Check your credit score](/protocol/validators/slashing#check-your-credit-score)
+  * [Use secure communication](/protocol/validators/setup/security#use-secure-communication)
 
 #### Reference
 
@@ -546,7 +545,7 @@ A reference topic works well when:
 
 ##### Reference template
 
-To write a reference topic, use the [reference](./basics/contribute/templates.md#reference) template.
+To write a reference topic, use the [reference](/basics/contribute/templates#reference) template.
 
 ##### Reference guidelines
 
@@ -584,11 +583,11 @@ the concepts covered in this topic.
 
 ##### Examples of reference topics
 
-* [Ronin mainnet](./validators/setup/parameters/mainnet.md)
-* [Security audits](./basics/audits.md)
+* [Ronin mainnet](/protocol/validators/setup/parameters/mainnet)
+* [Security audits](/basics/audits)
 * Reference topics within other pages:
-  * [Command reference](./validators/setup/cli.md#command-reference)
-  * [RON unlock schedule](./basics/tokenomics.md#ron-unlock-schedule)
+  * [Command reference](/protocol/validators/setup/cli#commands)
+  * [RON unlock schedule](/basics/tokenomics#ron-unlock-schedule)
 
 #### Troubleshooting
 
@@ -608,7 +607,7 @@ A troubleshooting topic can be one of three types:
 This topic introduces the troubleshooting section of a page.
 
 To create this topic, use the
-[Introductory topic](./basics/contribute/templates.md#introductory-topic)
+[Introductory topic](/basics/contribute/templates#introductory-topic)
 template.
 
 *A troubleshooting task*
@@ -617,7 +616,7 @@ The format is similar to the standard task, and the title follows the same verb
 and noun pattern, such as “Debug a Ronin node."
 
 To create this topic, use the
-[troubleshooting task](./basics/contribute/templates.md#troubleshooting-task) template.
+[troubleshooting task](/basics/contribute/templates#troubleshooting-how-to) template.
 
 *A troubleshooting reference*
 
@@ -626,7 +625,7 @@ workarounds, consider organizing them as a table. To write a title for a
 troubleshooting reference, consider including at least a partial error message. 
 
 To create this topic, use the
-[troubleshooting reference](./basics/contribute/templates.md#troubleshooting-reference)
+[troubleshooting reference](/basics/contribute/templates#troubleshooting-reference)
 template.
 
 #### Tutorial
@@ -639,7 +638,7 @@ Tutorials are useful when someone has a basic understanding of the product and i
 
 ##### Tutorial template
 
-To write a tutorial, use the [tutorial](./basics/contribute/templates.md#tutorial) template.
+To write a tutorial, use the [tutorial](/basics/contribute/templates#tutorial) template.
 
 ##### Tutorial guidelines
 
@@ -687,7 +686,7 @@ Quickstarts are useful when someone already understands the feature or product a
 
 ##### Quickstart template
 
-To write a quickstart guide, use the [quickstart](./basics/contribute/templates.md#quickstart) template.
+To write a quickstart guide, use the [quickstart](/basics/contribute/templates#quickstart) template.
 
 ##### Quickstart guidelines
 
@@ -725,7 +724,7 @@ If it exists, link to any relevant troubleshooting content rather than including
 
 ## Content style guide
 
-Ronin documentation adheres to the [content style guide](./basics/contribute/style-guide.md).
+Ronin documentation adheres to the [content style guide](/basics/contribute/style-guide).
 
 ## Documentation linter
 
@@ -782,7 +781,7 @@ As a documentation contributor, you should always review your PR against this
 checklist:
 
 * [ ] If you created a new page, make sure that it uses one of the
-  [templates](./basics/contribute/templates.md).
+  [templates](/basics/contribute/templates).
 * [ ] Make sure that screenshots and diagrams are stored in the `assets`
   directory in the category where the Markdown file is.
 * [ ] Compare your PR's output in the preview environment to confirm that the

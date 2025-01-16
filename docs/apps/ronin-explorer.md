@@ -10,6 +10,6 @@ blockchain data, such as transactions, blocks, addresses,
 contracts, and tokens. You can use the explorer to review transaction
 history, track transaction progress, and find addresses and contracts, for example.
 
-Visit the explorer at [app.roninchain.com/dashboard](https://app.roninchain.com/dashboard).
+Visit the explorer at [app.roninchain.com](https://app.roninchain.com).
 
 <img src={explorer} width={1200} />
