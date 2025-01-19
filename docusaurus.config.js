@@ -37,6 +37,16 @@ const config = {
     'docusaurus-plugin-sass',
     ['@docusaurus/plugin-client-redirects',
     {
+      redirects: [
+        {
+          from: '/delegators/onboarding/become-delegator',
+          to: '/protocol/delegators/become-delegator',
+        },
+        {
+          from: '/docs/delegators/onboarding/become-delegator',
+          to: '/protocol/delegators/become-delegator',
+        },
+      ],
       createRedirects(existingPath) {
         if (existingPath.includes('/')) {
           return [
