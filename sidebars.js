@@ -218,6 +218,7 @@ const sidebars = {
         "protocol/overview",
         "protocol/roles",
         "protocol/nodes",
+        "protocol/rewards",
         //Validators
         {
           type: "category",
