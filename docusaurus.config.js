@@ -60,8 +60,10 @@ const config = {
           // Replace the new path prefix with the old one
           return [
             existingPath.replace('/protocol/delegators/', '/delegators/onboarding/'),
+            existingPath.replace('/protocol/delegators/', '/delegators/manage/'),
             existingPath.replace('/protocol/delegators/', '/delegators/'),
             '/docs' + existingPath.replace('/protocol/delegators/', '/delegators/onboarding/'),
+            '/docs' + existingPath.replace('/protocol/delegators/', '/delegators/manage/'),
             '/docs' + existingPath.replace('/protocol/delegators/', '/delegators/'),
           ];
         }
