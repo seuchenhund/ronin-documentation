@@ -445,6 +445,7 @@ const sidebars = {
             "developers/nodes/mainnet-archive",
             "developers/nodes/testnet",
             "developers/nodes/testnet-archive",
+            "developers/nodes/upgrade-node-version",
           ]
         },
         {
