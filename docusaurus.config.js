@@ -39,15 +39,43 @@ const config = {
     {
       redirects: [
         {
-          from: '/delegators/onboarding/become-delegator',
-          to: '/protocol/delegators/become-delegator',
+          from: '/basics/rewards',
+          to: '/protocol/rewards',
         },
         {
-          from: '/docs/delegators/onboarding/become-delegator',
-          to: '/protocol/delegators/become-delegator',
+          from: '/basics/roles',
+          to: '/protocol/roles',
+        },
+        {
+          from: '/basics/nodes',
+          to: '/protocol/nodes',
+        },
+        {
+          from: '/get-started',
+          to: '/',
         },
       ],
       createRedirects(existingPath) {
+        if (existingPath.startsWith('/protocol/delegators/')) {
+          // Replace the new path prefix with the old one
+          return [
+            existingPath.replace('/protocol/delegators/', '/delegators/onboarding/'),
+            existingPath.replace('/protocol/delegators/', '/delegators/manage/'),
+            existingPath.replace('/protocol/delegators/', '/delegators/'),
+            '/docs' + existingPath.replace('/protocol/delegators/', '/delegators/onboarding/'),
+            '/docs' + existingPath.replace('/protocol/delegators/', '/delegators/manage/'),
+            '/docs' + existingPath.replace('/protocol/delegators/', '/delegators/'),
+          ];
+        }
+        if (existingPath.startsWith('/protocol/validators/')) {
+          // Replace the new path prefix with the old one
+          return [
+            existingPath.replace('/protocol/validators/', '/validators/onboarding/'),
+            existingPath.replace('/protocol/validators/', '/validators/'),
+            '/docs' + existingPath.replace('/protocol/validators/', '/validators/onboarding/'),
+            '/docs' + existingPath.replace('/protocol/validators/', '/validators/'),
+          ];
+        }
         if (existingPath.includes('/')) {
           return [
             '/docs' + existingPath

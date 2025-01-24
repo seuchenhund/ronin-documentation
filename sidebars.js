@@ -218,6 +218,7 @@ const sidebars = {
         "protocol/overview",
         "protocol/roles",
         "protocol/nodes",
+        "protocol/rewards",
         //Validators
         {
           type: "category",
@@ -444,6 +445,7 @@ const sidebars = {
             "developers/nodes/mainnet-archive",
             "developers/nodes/testnet",
             "developers/nodes/testnet-archive",
+            "developers/nodes/upgrade-node-version",
           ]
         },
         {
