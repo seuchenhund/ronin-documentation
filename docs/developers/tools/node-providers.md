@@ -44,3 +44,16 @@ Enterprise grade RPC node API for Ronin and Saigon testnet. Supports full archiv
 | Archive node | ✅ |
 | Websocket | ❌ |
 | Testnet | ✅ |
+
+## Tenderly
+
+[tenderly.co](https://tenderly.co/)
+
+Integrate a high-performance production Node RPC with built-in debugging tools and embedded development environments for any EVM chain.
+
+| | |
+| ----- | ----- |
+| Free trial | ✅ |
+| Archive node | ✅ |
+| Websocket | ✅ |
+| Testnet | ❌ |
