@@ -465,8 +465,9 @@ const sidebars = {
           type: "category",
           label: "Tools and services",
           link: {
-            type: "doc",
-            id: "developers/tools/node-providers"
+            type: "generated-index",
+            description: "Discover Ronin tools or services.",
+            slug: "/developers/tools",
           },
           items:[
             "developers/tools/node-providers",
