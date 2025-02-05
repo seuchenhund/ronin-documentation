@@ -8,10 +8,11 @@ import CoinsIcon from './coins.svg'
 import FireIcon from './fire.svg'
 import WalletIcon from './wallet.svg'
 import RoninLogoIcon from './ronin-logo.svg'
-import ContractLogo from './deploy-contract.svg'
-import NodeLogo from './server.svg'
-import ToolsLogo from './tools.svg'
+import ContractIcon from './deploy-contract.svg'
+import NodeIcon from './server.svg'
+import ToolsIcon from './tools.svg'
 import GiftIcon from './gift.svg'
+import BoltIcon from './bolt.svg'
 
 const getStartedList = [
 
@@ -47,17 +48,17 @@ const getStartedList = [
 
 const startBuildingList = [
   {
-    title: 'Deploy a smart contract',
-    Icon: ContractLogo,
+    title: 'Quickstart',
+    Icon: BoltIcon,
     link: {
-      href: '/developers/smart-contracts/deploy',
-      title: 'Deploy a smart contract',
+      href: '/developers/quickstart',
+      title: 'Quickstart',
     },
-    description: <>Learn how to deploy and verify your contracts.</>,
+    description: <>Get started quickly using our guides, covering reading and writing data to the network, as well as deploying smart contracts.</>,
   },
   {
     title: 'Set up a node',
-    Icon: NodeLogo,
+    Icon: NodeIcon,
     link: {
       href: '/developers/nodes',
       title: 'Set up a node',
@@ -65,8 +66,17 @@ const startBuildingList = [
     description: <>Deploy a mainnet or testnet node to query the blockchain without limitations.</>,
   },
   {
+    title: 'Deploy a smart contract',
+    Icon: ContractIcon,
+    link: {
+      href: '/developers/smart-contracts/deploy',
+      title: 'Deploy a smart contract',
+    },
+    description: <>Learn more about deploying and verifying your contracts.</>,
+  },
+  {
     title: 'Discover tools',
-    Icon: ToolsLogo,
+    Icon: ToolsIcon,
     link: {
       href: '/developers/tools',
       title: 'Discover tools',
