@@ -4,7 +4,7 @@ description: Learn how to write blockchain data to the Ronin network.
 ---
 
 ## Introduction
-This guide will walk you through writing data to the Ronin network using [ethers.js v6](https://docs.ethers.org/v6/). You’ll learn how to send transactions, interact with smart contracts, and update blockchain data.
+This guide will walk you through writing data to the Ronin network using [ethers.js v6](https://docs.ethers.org/v6/). You’ll learn how to send transactions and interact with smart contracts.
 
 ## Prerequisites
 Before you begin, make sure you have:
