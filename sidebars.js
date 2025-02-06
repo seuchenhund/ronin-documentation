@@ -37,6 +37,11 @@ const sidebars = {
           label: "Introduction to Ronin",
           id: "basics/introduction",
         },
+        {
+          type: 'link',
+          label: 'Whitepaper',
+          href: '/basics/white-paper',
+        },
         // Acquire RON
         "basics/acquire-ron",
         // Tokenomics
@@ -503,6 +508,11 @@ const sidebars = {
             "developers/tools/delegation",
             "developers/tools/faucet",
           ]
+        },
+        {
+          type: 'link',
+          label: 'Ronin Developer Console',
+          href: 'https://developers.roninchain.com/console',
         },
         {
           type: 'link',

@@ -13,6 +13,9 @@ import NodeIcon from './server.svg'
 import ToolsIcon from './tools.svg'
 import GiftIcon from './gift.svg'
 import BoltIcon from './bolt.svg'
+import DevelopersIcon from './developers.svg'
+import StorefrontIcon from './storefront.svg'
+import ShoppingcartIcon from './shoppingcart.svg'
 
 const getStartedList = [
 
@@ -57,6 +60,15 @@ const startBuildingList = [
     description: <>Get started quickly using our guides, covering reading and writing data to the network, as well as deploying smart contracts.</>,
   },
   {
+    title: 'Explore the Ronin Developer Console',
+    Icon: DevelopersIcon,
+    link: {
+      href: 'https://developers.roninchain.com/console',
+      title: 'Explore the Ronin Developer Console',
+    },
+    description: <>Deploy, sell & list NFTs with no-code tools. Access Sky Mavis suite of products for distribution.</>,
+  },
+  {
     title: 'Set up a node',
     Icon: NodeIcon,
     link: {
@@ -75,13 +87,13 @@ const startBuildingList = [
     description: <>Learn more about deploying and verifying your contracts.</>,
   },
   {
-    title: 'Discover tools',
+    title: 'Discover services & tools',
     Icon: ToolsIcon,
     link: {
       href: '/developers/tools',
       title: 'Discover tools',
     },
-    description: <>Use Ronin tools and services to quickly build a project prototype.</>,
+    description: <>Use Ronin ecosystem services and tools to quickly build a project prototype.</>,
   },
   /*
   {
@@ -123,6 +135,27 @@ const uxList = [
       title: 'Integrate the Ronin Wallet',
     },
     description: <>Learn how to integrate the Ronin wallet to your project.</>,
+  },
+];
+
+const monetizeList = [
+  {
+    title: 'List a collection on Ronin Market',
+    Icon: StorefrontIcon,
+    link: {
+      href: 'https://docs.skymavis.com/mavis/mavis-market/overview',
+      title: 'List a collection on Ronin Market',
+    },
+    description: <>Sell your collection on our launchpad or list your NFTs for secondary trading.</>,
+  },
+  {
+    title: 'Set up sales on Ronin Store',
+    Icon: ShoppingcartIcon,
+    link: {
+      href: 'https://docs.skymavis.com/mavis/mavis-store/overview',
+      title: 'Set up sales on Ronin Store',
+    },
+    description: <>Sell in-game items to players, including both on-chain and off-chain items.</>,
   },
 ];
 
@@ -171,6 +204,14 @@ export const Features: React.FC = () => {
       </div>
       <div className="row">
         {uxList.map((props, idx) => (
+          <Card key={idx} {...props} iconColor="var(--ifm-color-primary-dark)" />
+        ))}
+      </div>
+      <div className="row">
+        <h2>Start monetizing</h2>
+      </div>
+      <div className="row">
+        {monetizeList.map((props, idx) => (
           <Card key={idx} {...props} iconColor="var(--ifm-color-primary-dark)" />
         ))}
       </div>
