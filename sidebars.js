@@ -481,7 +481,8 @@ const sidebars = {
                 slug: "/oracles",
               },
               items: [
-                "developers/tools/oracles/pyth"
+                "developers/tools/oracles/pyth",
+                "developers/tools/oracles/chainlink"
               ]
             },
             "developers/tools/vrf",
