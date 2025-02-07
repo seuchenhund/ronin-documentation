@@ -16,6 +16,7 @@ import BoltIcon from './bolt.svg'
 import DevelopersIcon from './developers.svg'
 import StorefrontIcon from './storefront.svg'
 import ShoppingcartIcon from './shoppingcart.svg'
+import CubeIcon from './cube.svg'
 
 const getStartedList = [
 
@@ -45,6 +46,15 @@ const getStartedList = [
       title: 'Join the community',
     },
     description: <>Stay informed on the latest Ronin news, events, and programs.</>,
+  },
+  {
+    title: 'Become a validator',
+    Icon: CubeIcon,
+    link: {
+      href: '/protocol/validators/become-validator',
+      title: 'Become a validator',
+    },
+    description: <>Secure the network and deploy your own validator node.</>,
   },
 
 ]
