@@ -14,7 +14,7 @@ The code for reading Data Feeds is the same across all EVM-compatible blockchain
 
 - **RPC endpoint URL**: This determines which network that your smart contracts will run on. You can use a [node provider service](https://ethereum.org/en/developers/docs/nodes-and-clients/nodes-as-a-service/) or point to your own [client](https://ethereum.org/en/developers/docs/nodes-and-clients/).
 - **LINK token contract address**: The address for the LINK token contract is different for each network. On Ronin, LINK token contract address is `0x3902228d6a3d2dc44731fd9d45fee6a61c722d0b`.
-- **Feed contract address**: This determines which data feed your smart contract will read. You can find the available contract addresses on the following [page](https://docs.chain.link/data-feeds/price-feeds/addresses?network=ronin&page=1):
+- **Feed contract address**: This determines which data feed your smart contract will read. You can find the available contract addresses [here](https://docs.chain.link/data-feeds/price-feeds/addresses?network=ronin&page=1).
   
 This guide shows example code that reads data feeds using the following languages:
 
