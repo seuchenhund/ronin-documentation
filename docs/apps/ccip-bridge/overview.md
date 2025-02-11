@@ -30,5 +30,5 @@ The [Cross-Chain Interoperability Protocol (CCIP)](https://app.roninchain.com/cc
 
 ## Developer guides 
 
-* [Learn the token requirements to integrate with CCIP](./guides/smart-contract-requirements.md)
+* [Learn the token requirements to integrate with CCIP](/developers/tools/ccip)
 * Developers can access CCIP through [Chainlink's documentation and SDKs](https://docs.chain.link/ccip). The protocol provides tools and resources for integrating cross-chain functionality into dApps, with an emphasis on security and straightforward implementation.
