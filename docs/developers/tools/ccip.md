@@ -1,11 +1,13 @@
 ---
+title: Chainlink CCIP Bridge
 description: Learn the token requirements to integrate with CCIP
-slug: /apps/ccip-bridge/smart-contract-requirements
-title: ERC-20 Smart Contract Requirements
-toc_max_heading_level: 2
 ---
 
 ## Overview
+
+The Chainlink CCIP (Cross-Chain Interoperability Protocol) bridge is a decentralized messaging and token transfer solution that enables secure and reliable cross-chain communication. It allows developers to transfer tokens and data between different blockchains while using Chainlink’s proven security infrastructure. CCIP is designed for interoperability, supporting both EVM and non-EVM chains.
+
+##  ERC-20 Smart Contract Requirements
 
 Before enabling an ERC20-compatible token in CCIP, it's important to understand the requirements it must fulfill to integrate with CCIP.
 
@@ -34,3 +36,7 @@ The token's smart contract must meet minimum requirements to integrate with CCIP
 :::info
 **If you don't have an existing token**: For all blockchains where tokens need to be burned and minted (for example, the source or destination chain in the case of Burn and Mint, or the destination blockchain in the case of Lock and Mint), Chainlink provides a [BurnMintERC677](https://github.com/smartcontractkit/ccip/blob/ccip-develop/contracts/src/v0.8/shared/token/ERC677/BurnMintERC677.sol) contract that you can use to deploy your token in minutes. This token follows the [ERC677](https://github.com/ethereum/EIPs/issues/677) or [ERC777](https://ethereum.org/en/developers/docs/standards/tokens/erc-777/), allowing you to use it as-is or extend it to meet your specific requirements. You can also use a standard **ERC-20** as long as it meets the above specifications.
 :::
+
+## Read more
+
+[Chainlink CCIP documentation](https://docs.chain.link/ccip)

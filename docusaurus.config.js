@@ -39,6 +39,10 @@ const config = {
     {
       redirects: [
         {
+          from: '/apps/ccip-bridge/smart-contract-requirements',
+          to: '/developers/tools/ccip',
+        },
+        {
           from: '/basics/rewards',
           to: '/protocol/rewards',
         },

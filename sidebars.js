@@ -143,8 +143,6 @@ const sidebars = {
               items: [
                 // Transfer ERC-20 tokens
                 "apps/ccip-bridge/guides/transfer-token",
-                // Learn the token requirements to integrate with CCIP
-                "apps/ccip-bridge/guides/smart-contract-requirements",
               ],
             },
             // Ronin Explorer
@@ -504,6 +502,7 @@ const sidebars = {
                 "developers/tools/oracles/chainlink"
               ]
             },
+            "developers/tools/ccip",
             "developers/tools/vrf",
             "developers/tools/delegation",
             "developers/tools/faucet",
