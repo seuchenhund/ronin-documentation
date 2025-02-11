@@ -39,6 +39,10 @@ const config = {
     {
       redirects: [
         {
+          from: '/apps/ccip-bridge/smart-contract-requirements',
+          to: '/developers/tools/ccip',
+        },
+        {
           from: '/basics/rewards',
           to: '/protocol/rewards',
         },
@@ -184,9 +188,17 @@ const config = {
         },
         items: [
           {
-            label: 'Whitepaper',
-            to: '/basics/white-paper',
-            target: '_blank',
+            label: 'Basics',
+            to: '/basics',
+            //target: '_blank',
+          },
+          {
+            label: 'Protocol',
+            to: '/protocol',
+          },
+          {
+            label: 'Developers',
+            to: '/developers',
           },
           // Blog
           {

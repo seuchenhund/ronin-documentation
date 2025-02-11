@@ -8,6 +8,12 @@ title: Transfer an ERC-20 token
 
 This guide describes how to use CCIP Bridge to send an ERC-20 token from Ronin to Ethereum.
 
+
+:::info
+If you are a developer and want to learn more about the token requirements, please visit [this guide](/developers/tools/ccip).
+:::
+
+
 ## Prerequisites
 
 If you access CCIP Bridge on mobile, remember to import your Ethereum address to your mobile Ronin Wallet. To learn how to do that, see [Importing Your MetaMask Wallet to Ronin Wallet](https://support.roninchain.com/hc/en-us/articles/14862812718107-Importing-Your-MetaMask-Wallet-to-Ronin-Wallet).
@@ -54,5 +60,3 @@ If you access CCIP Bridge on mobile, remember to import your Ethereum address to
    When the transaction is complete, you’ll see the “Transfer complete" window 
 
    ![step_8](../assets/step_8.png)
-
-

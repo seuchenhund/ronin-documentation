@@ -3,15 +3,19 @@ import React from 'react'
 import { Card } from './Card'
 import CommunityIcon from './community.svg'
 import BoxTickIcon from './box-tick.svg'
-import StackIcon from './stack.svg'
 import CoinsIcon from './coins.svg'
 import FireIcon from './fire.svg'
 import WalletIcon from './wallet.svg'
 import RoninLogoIcon from './ronin-logo.svg'
-import ContractLogo from './deploy-contract.svg'
-import NodeLogo from './server.svg'
-import ToolsLogo from './tools.svg'
+import ContractIcon from './deploy-contract.svg'
+import NodeIcon from './server.svg'
+import ToolsIcon from './tools.svg'
 import GiftIcon from './gift.svg'
+import BoltIcon from './bolt.svg'
+import DevelopersIcon from './developers.svg'
+import StorefrontIcon from './storefront.svg'
+import ShoppingcartIcon from './shoppingcart.svg'
+import CubeIcon from './cube.svg'
 
 const getStartedList = [
 
@@ -42,22 +46,40 @@ const getStartedList = [
     },
     description: <>Stay informed on the latest Ronin news, events, and programs.</>,
   },
+  {
+    title: 'Become a validator',
+    Icon: CubeIcon,
+    link: {
+      href: '/protocol/validators/become-validator',
+      title: 'Become a validator',
+    },
+    description: <>Secure the network and deploy your own validator node.</>,
+  },
 
 ]
 
 const startBuildingList = [
   {
-    title: 'Deploy a smart contract',
-    Icon: ContractLogo,
+    title: 'Quickstart',
+    Icon: BoltIcon,
     link: {
-      href: '/developers/smart-contracts/deploy',
-      title: 'Deploy a smart contract',
+      href: '/developers/quickstart',
+      title: 'Quickstart',
     },
-    description: <>Learn how to deploy and verify your contracts.</>,
+    description: <>Get started quickly using our guides, covering reading and writing data to the network, as well as deploying smart contracts.</>,
+  },
+  {
+    title: 'Explore the Ronin Developer Console',
+    Icon: DevelopersIcon,
+    link: {
+      href: 'https://developers.roninchain.com/console',
+      title: 'Explore the Ronin Developer Console',
+    },
+    description: <>Deploy, sell & list NFTs with no-code tools. Access Sky Mavis suite of products for distribution.</>,
   },
   {
     title: 'Set up a node',
-    Icon: NodeLogo,
+    Icon: NodeIcon,
     link: {
       href: '/developers/nodes',
       title: 'Set up a node',
@@ -65,13 +87,22 @@ const startBuildingList = [
     description: <>Deploy a mainnet or testnet node to query the blockchain without limitations.</>,
   },
   {
-    title: 'Discover tools',
-    Icon: ToolsLogo,
+    title: 'Deploy a smart contract',
+    Icon: ContractIcon,
+    link: {
+      href: '/developers/smart-contracts/deploy',
+      title: 'Deploy a smart contract',
+    },
+    description: <>Learn more about deploying and verifying your contracts.</>,
+  },
+  {
+    title: 'Discover services & tools',
+    Icon: ToolsIcon,
     link: {
       href: '/developers/tools',
       title: 'Discover tools',
     },
-    description: <>Use Ronin tools and services to quickly build a project prototype.</>,
+    description: <>Use Ronin ecosystem services and tools to quickly build a project prototype.</>,
   },
   /*
   {
@@ -116,6 +147,27 @@ const uxList = [
   },
 ];
 
+const monetizeList = [
+  {
+    title: 'List a collection on Ronin Market',
+    Icon: StorefrontIcon,
+    link: {
+      href: 'https://docs.skymavis.com/mavis/mavis-market/overview',
+      title: 'List a collection on Ronin Market',
+    },
+    description: <>Sell your collection on our launchpad or list your NFTs for secondary trading.</>,
+  },
+  {
+    title: 'Set up sales on Ronin Store',
+    Icon: ShoppingcartIcon,
+    link: {
+      href: 'https://docs.skymavis.com/mavis/mavis-store/overview',
+      title: 'Set up sales on Ronin Store',
+    },
+    description: <>Sell in-game items to players, including both on-chain and off-chain items.</>,
+  },
+];
+
 const growList = [
   {
     title: 'Apply for a grant',
@@ -126,6 +178,7 @@ const growList = [
     },
     description: <>Explore funding and get the resources you need to build your innovative project.</>,
   },
+  /*
   {
     title: 'Explore zkEVM',
     Icon: StackIcon,
@@ -135,6 +188,7 @@ const growList = [
     },
     description: <>Launch your own digital nation on the largest Web3 network for gamers.</>,
   },
+  */
 ];
 
 export const Features: React.FC = () => {
@@ -161,6 +215,14 @@ export const Features: React.FC = () => {
       </div>
       <div className="row">
         {uxList.map((props, idx) => (
+          <Card key={idx} {...props} iconColor="var(--ifm-color-primary-dark)" />
+        ))}
+      </div>
+      <div className="row">
+        <h2>Start monetizing</h2>
+      </div>
+      <div className="row">
+        {monetizeList.map((props, idx) => (
           <Card key={idx} {...props} iconColor="var(--ifm-color-primary-dark)" />
         ))}
       </div>

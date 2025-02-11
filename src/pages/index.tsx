@@ -13,9 +13,6 @@ const Home: React.FC = () => {
           <h1 className={styles.heroBannerHeading}>Welcome to the Ronin chain documentation</h1>
         </header>
         <main className={styles.main}>
-          <div>
-            <img src='/img/mascot.svg' className={styles.mascot} />
-          </div>
           <Features />
         </main>
       </div>
