@@ -3,7 +3,6 @@ import React from 'react'
 import { Card } from './Card'
 import CommunityIcon from './community.svg'
 import BoxTickIcon from './box-tick.svg'
-import StackIcon from './stack.svg'
 import CoinsIcon from './coins.svg'
 import FireIcon from './fire.svg'
 import WalletIcon from './wallet.svg'
@@ -179,6 +178,7 @@ const growList = [
     },
     description: <>Explore funding and get the resources you need to build your innovative project.</>,
   },
+  /*
   {
     title: 'Explore zkEVM',
     Icon: StackIcon,
@@ -188,6 +188,7 @@ const growList = [
     },
     description: <>Launch your own digital nation on the largest Web3 network for gamers.</>,
   },
+  */
 ];
 
 export const Features: React.FC = () => {
