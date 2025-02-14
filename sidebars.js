@@ -447,6 +447,7 @@ const sidebars = {
             "developers/quickstart/read",
             "developers/quickstart/write",
             "developers/quickstart/deploy",
+            "developers/quickstart/list-collection",
           ]
         },
         {

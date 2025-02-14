@@ -1,88 +1,24 @@
 ---
 title: Smart contract guidelines
-description: Restrictions and recommendations for Ronin smart contract developers.
+description: Recommendations for Ronin smart contract developers.
 ---
 
 This page provides a list of guidelines for third-party developers looking to deploy smart contracts onto the Ronin chain.
 
-## Disclaimer
-
-These guidelines are provided to assure that the contracts developed by third parties will not abuse the system nor the Ronin chain. An approval granted by Ronin’s reviewers only states that the approved contract will not abuse the chain. The approval does not state that the contract is error-free or doesn't contain any logical or security flaws. The author of the contract is responsible for the contract's' behavior and is recommended to have their contract audited by themselves. Ronin hereby disclaims all liability to the maintainers or any third party related to any such contracts that may be included in or accompany the contracts.
-
 ## Checklist
 
-The following is a checklist of essential requirements that contracts from third parties must meet for third-party developers' contracts:
+The following is a checklist of recommendations that contracts from third parties should meet:
 
-- Contract DOES NOT create new contracts.
 - Contract DOES NOT self-destruct.
 - Contract DOES NOT “returnbomb” the callee.
+- Contract is compatible with London EVM fork.
 - DO NOT use TransparentUpgradeableProxy with OpenZeppelin v5.x.x.
 - DO NOT use TransparentUpgradeableProxy with the openzeppelin-upgrades library.
 - DO verify the contract's source code after deployment.
 
-The following sections cover these restrictions and some recommendations in detail.
+The following sections cover these recommendations in detail.
 
-## Restrictions
-
-To prevent unauthorized contract deployment onto the Ronin chain, the following usages SHOULD NOT occur in any contracts from third parties.
-
-### ❌ Contract creates other new contracts {#contract-creates-other-new-contracts}
-
-In general, the deployment of new contracts onto the Ronin network is restricted and approved by an allowlist mechanism which allows certain specified addresses to deploy new contracts. This prevents the network from being abused and containing many _spam_ contracts.
-
-Therefore, a contract on Ronin MUST NOT be able to create other contracts. The following sections demonstrate some examples of this behavior.
-
-If creation of other contracts within a contract is required due to the design or requirement of the product, such contract is reviewed by Sky Mavis manually with proper explanations from the requester.
-
-#### Solidity keywords
-
-##### `new` keyword
-
-The `new` keyword in Solidity is used to create a new instance of a smart contract.
-
-Example:
-
-```solidity title="Example" showLineNumbers
-contract ChildContract {}
-
-contract MomContract {
-  ChildContract public child;
-
-  constructor() {
-    child = new ChildContract();
-  }
-}
-```
-
-#### Assembly instructions
-
-| Instruction           | Explanation                                                                                                                                                |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `create(v, p, s)`     | Create a new contract with code `mem[p..(p+s))`, send `v` wei, and return the new address.                                                                 |
-| `create2(v, n, p, s)` | Create a new contract with code `mem[p..(p+s))` at address `keccak256(<address> . n . keccak256(mem[p..(p+s)))`, send `v` wei, and return the new address. |
-
-```solidity title=Example showLineNumbers
-contract Factory {
-    event Deployed(address addr, uint256 salt);
-
-    function getCreationBytecode(address _owner, uint _foo) public pure returns (bytes memory) {
-        bytes memory bytecode = type(Wallet).creationCode;
-        return abi.encodePacked(bytecode, abi.encode(_owner, _foo));
-    }
-
-    // Note: Call this function with bytecode from getCreationByteCode and a random salt
-    function deploy(bytes memory bytecode, uint _salt) public {
-        address addr;
-        assembly {
-            addr := create2(0, add(bytecode, 0x20), mload(bytecode), _salt)
-            if iszero(extcodesize(addr)) {
-                revert(0, 0)
-            }
-        }
-        emit Deployed(addr, _salt);
-    }
-}
-```
+## Recommendations
 
 ### ❌ Contract has "selfdestruct" instruction {#contract-has-selfdestruct-instruction}
 
@@ -111,8 +47,6 @@ function exhaustivelyConsumeAllGas() external pure {
 On the deployment of the [TransparentUpgradeableProxy](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/8b4b7b8d041c62a84e2c23d7f6e1f0d9e0fc1f20/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#L79) in OpenZepplin v5.x.x, the constructor will auto-create a [ProxyAdmin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/8b4b7b8d041c62a84e2c23d7f6e1f0d9e0fc1f20/contracts/proxy/transparent/ProxyAdmin.sol#L13) contract, which later becomes the admin of the current proxy. Because the address of the proxy was not added to the allowlist previously, the deployment of the proxy will break.
 
 The deployer has no control to specify another admin address or change this behavior in this pattern.
-
-The Ronin team will not allowlist these proxy addresses.
 
 As a workaround, you can do the following:
 

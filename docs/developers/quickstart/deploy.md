@@ -7,6 +7,10 @@ description: Learn how to deploy your first smart contract with Foundry.
 
 This guide will walk you through deploying a smart contract on the Ronin network using [Foundry](https://book.getfoundry.sh/). Foundry is a fast, portable, and modular toolkit for smart contract development.
 
+:::info Did you know?
+[The Ronin Developer Console](https://developers.roninchain.com/console) offers selected ERC20 and ERC721 contract templates for quick and easy click & deploy.
+:::
+
 ## Prerequisites
 
 Before you begin, ensure you have:
@@ -41,6 +45,10 @@ contract Counter {
     }
 }
 ```
+
+:::warning Attention
+The Ronin EVM is currently comparable to the [London](https://ethereum.org/en/history/#london) fork of Ethereum. Please make sure that your contracts are compatible.
+:::
 
 ## 3. Configure Foundry for Ronin
 
