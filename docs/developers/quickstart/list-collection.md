@@ -13,7 +13,7 @@ Before listing your collection, ensure you have the following:
 - Access to the NFT contract owner's address via your Ronin Wallet for signing the request.
 
 ## Step 1: Access Collection Listing in the Ronin Developer Console
-1. Log in to the [Ronin Developer Console](https://developer.roninchain.com/).
+1. Log in to the [Ronin Developer Console](https://developers.roninchain.com/).
 2. Select your Project.
 3. Navigate to **Ronin Marketplace > NFT Collection Listing**.
 
