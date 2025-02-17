@@ -428,11 +428,7 @@ const sidebars = {
       label: "Developers",
       collapsed: false,
       collapsible: false,
-      link: {
-        type: "generated-index",
-        description: "Build on Ronin.",
-        slug: "/developers",
-      },
+      link: { type: "doc", id: "developers/index" },
       items: [
         "developers/network",
         {
