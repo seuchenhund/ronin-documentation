@@ -82,6 +82,18 @@ function getRewardedUsers() external view returns (address[] memory) {
 }
 ```
 
+## CREATE2 factory
+
+During Ronin's permissioned phase, the CREATE2 factory contract at `0x4e59b44847b379578588920cA78FbF26c0B4956C` was blacklisted to prevent contract deployments through it.
+
+This restriction will be lifted in the next Ronin hard fork.
+
+In the meantime, developers can:
+
+* Deploy their contracts manually
+* Deploy their own CREATE2 factory contract
+* Use the alternate CREATE2 factory contract at `0x47211409ff98f42834203db289387c71e2275eae`
+
 ## Contract source code verification {#source-code-verification}
 
 Verifying a smart contract is a crucial step to ensure the integrity and security of the Ronin network. The verification involves inspecting the contract's source code to ensure that it is bug-free, secure, and will perform as expected.
