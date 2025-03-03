@@ -1,0 +1,92 @@
+import React, { useState } from 'react';
+
+
+---
+description: Set up and run an RPC node (non-validator node) on the Ronin mainnet using Docker.
+title: Setup
+---
+
+## Prerequisites
+
+Install Docker Engine and the Docker Compose plugin:
+
+* [Docker Engine](https://docs.docker.com/engine/)
+* [Docker Compose](https://docs.docker.com/compose/)
+
+## Steps
+
+{(() => {
+
+  const nodeTypes = ["Full node", "Archive node", "Validator node"];
+  const networks = ["Mainnet", "Saigon Testnet"];
+
+  const [nodeType, setNodeType] = useState(0);
+  const [network, setNetwork] = useState(0);
+
+  const buttonStyle = {
+    margin: '5px',
+    cursor: 'pointer',
+    padding: '10px 15px',
+    border: 'none',
+    backgroundColor: '#007bff',
+    color: 'white',
+    borderRadius: '5px'
+  };
+
+  return (
+    <div>
+    <h3>1. Choose your node type</h3>
+      <p>
+        {
+          nodeTypes.map((label,idx) => 
+            <button 
+              key={`nodeType${idx}`} 
+              onClick={() => setNodeType(idx)} 
+              style={{...buttonStyle,...{opacity: nodeType === idx ? 1 : 0.4}}}>
+                {label}
+            </button>
+          )
+        }
+      </p>
+
+    <h3>2. Choose the network</h3>
+
+     <p>
+      {
+        networks.map((label,idx) => 
+          <button 
+            key={`network${idx}`} 
+            onClick={() => setNetwork(idx)} 
+            style={{...buttonStyle,...{opacity: network === idx ? 1 : 0.4}}}>
+              {label}
+          </button>
+        )
+      }
+    </p>
+
+    <h3>3. Set up directories</h3>
+
+    <code>
+      mkdir -p ~/ronin/docker 
+      <br/>
+      cd ~/ronin
+    </code>
+    <p>
+      Create a directory for chain data:
+    </p>
+    <code>
+      mkdir -p chaindata/data/ronin
+    <br/>
+    </code>
+
+
+      <div style={{ marginTop: '20px', padding: '10px', border: '1px solid #ccc' }}>
+        {nodeType === 0 ? (
+          <p>This is the content for Option 1.</p>
+        ) : (
+          <p>This is the content for Option 2.</p>
+        )}
+      </div>
+    </div>
+  );
+})()}
