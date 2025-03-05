@@ -430,7 +430,21 @@ const sidebars = {
       collapsible: false,
       link: { type: "doc", id: "developers/index" },
       items: [
-        "developers/network",
+        {
+          type: "category",
+          label: "Network",
+          link: { type: "doc", id: "developers/network/index" },
+          items:[
+            {
+              type: "category",
+              label: "EIP-1559",
+              link: { type: "doc", id: "developers/network/eip-1559/index" },
+              items:[
+                "developers/network/eip-1559/gas-suggestion"
+              ]
+            }
+          ]
+        },
         {
           type: "category",
           label: "Quickstart",

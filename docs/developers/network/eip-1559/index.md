@@ -5,7 +5,7 @@ description: Ronin is preparing for an upcoming hardfork that will introduce EIP
 
 Ronin is preparing for an upcoming hardfork that will introduce a base fee mechanism for gas pricing, in line with EIP-1559. This update will improve fee predictability and network efficiency by changing how gas prices are calculated.
 
-The hardfork is expected to go live on March 17th, 7:00 UTC on mainnet. Saigon testnet has already been updated. We encourage you to test and adjust your applications in advance.
+The Ronin mainnet hardfork is expected to go live on **March 17th** at block [43447600](https://app.roninchain.com/block/43447600). Saigon testnet has already been updated. We encourage you to test and adjust your applications in advance.
 
 ## What's Changing?
 
@@ -20,15 +20,19 @@ EIP-1559 introduces a dynamic fee structure, offering several benefits:
 * Network stability: Helps prevent gas price spikes during high traffic.
 * More efficient transactions: Encourages optimal gas usage and reduces unnecessary bidding wars.
 
-## Action Required: Updating Gas Price Handling
-
+:::danger Action Required!
 If your application hardcodes gas prices at 20 gwei, update it to accommodate the new base fee mechanism.
+:::
 
 ## How to detect if EIP-1559 is applied
 
+The Ronin mainnet hardfork is expected to go live on **March 17th** at block [43447600](https://app.roninchain.com/block/43447600). To ensure a smooth transition in your application, you can switch the logic, based on the block number or use the following methods.
+
+### JSON RPC
+
 By calling `eth_feeHistory`, you can automatically check whether EIP-1559 is applied. If `baseFeePerGas` is `0x0`, the upgrade has not yet happened. If `baseFeePerGas` returns a nonzero value, EIP-1559 is active.
 
-### Before the hard fork (Ronin mainnet example):
+#### Before the hard fork (Ronin mainnet example):
 
 ```
 curl -X POST https://api.roninchain.com/rpc \
@@ -42,7 +46,7 @@ Response
 {"jsonrpc":"2.0","id":1,"result":{"baseFeePerGas":["0x0","0x0"], ... }}
 ```
 
-###  After the hard fork (Saigon testnet example):
+####  After the hard fork (Saigon testnet example):
 
 ```
 curl -X POST https://saigon-testnet.roninchain.com/rpc \
@@ -87,3 +91,7 @@ const NETWORK = new ethers.Network("saigon", "2021");
 
 })(); 
 ```
+
+## See also
+
+- [Gas Suggestion API overview](./gas-suggestion)
