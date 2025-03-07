@@ -58,6 +58,19 @@ Enterprise grade RPC node API for Ronin and Saigon testnet. Supports full archiv
 | Websocket | ❌ |
 | Testnet | ✅ |
 
+## Tatum
+
+[tatum.io](https://tatum.io/chain/ronin)
+
+Tatum provides fast, reliable access to Ronin RPCs starting with a free tier and scaling to a Business Plan with Websockets and 200+ RPS on demand. Tatum also provides exclusive incentives to Ronin builders.
+
+| | |
+| ----- | ----- |
+| Free trial | ✅ |
+| Archive node | ✅ |
+| Websocket | ✅ |
+| Testnet | ✅ |
+
 ## Tenderly
 
 [tenderly.co](https://tenderly.co/)
@@ -69,4 +82,4 @@ Integrate a high-performance production Node RPC with built-in debugging tools a
 | Free trial | ✅ |
 | Archive node | ✅ |
 | Websocket | ✅ |
-| Testnet | ❌ |
+| Testnet | ✅ |
