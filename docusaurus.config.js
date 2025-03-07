@@ -172,14 +172,13 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
-      // announcementBar: {
-      //   id: 'slashing',
-      //   content:
-      //     'Slashing rules have been updated, see <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/ronin_network/status/1645664361799901185?s=46&t=YkUXw7V1JhDN_wzIX5WIUg">Twitter announcement</a>',
-      //   backgroundColor: '#EEF9FD',
-      //   textColor: '#091E42',
-      //   isCloseable: false,
-      // },
+      announcementBar: {
+        id: 'hardfork',
+        content: `Ronin is preparing for an upcoming hardfork at <a href="https://app.roninchain.com/block/43447600">block 43447600</a> that will introduce a base fee mechanism for gas pricing, in line with EIP-1559. <a href="/developers/network/eip-1559/">Learn more</a>.`,
+        backgroundColor: '#FFDE81',
+        textColor: '#1D273D',
+        isCloseable: false,
+      },
       navbar: {
         title: 'Ronin',
         logo: {
