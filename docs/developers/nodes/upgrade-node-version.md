@@ -22,20 +22,20 @@ hardforks are announced seven days in advance on our
 ## Ronin node
 
 Every Ronin node release is published on
-[GitHub](https://github.com/axieinfinity/ronin/releases).
+[GitHub](https://github.com/ronin-chain/ronin/releases).
 
 ### Mainnet
 
 To find the Docker image for each mainnet release, visit the following:
 
-* [GitHub Container Registry](https://github.com/axieinfinity/ronin/pkgs/container/ronin)
+* [GitHub Container Registry](https://github.com/ronin-chain/ronin/pkgs/container/ronin)
 
 To download the latest image for your node, follow these steps:
 
 1. In the `.env` file, set `NODE_IMAGE` to the following:
 
     ```bash
-    ghcr.io/axieinfinity/ronin:v2.8.3-d27eb42
+    ghcr.io/ronin-chain/ronin:v1.0.2-eaef5a2
     ```
 
 2. Save the changes.
@@ -44,14 +44,14 @@ To download the latest image for your node, follow these steps:
 ### Saigon testnet
 
 To find the Docker image for each testnet release, visit
-[Docker Hub](https://hub.docker.com/r/axieinfinity/ronin-testnet/tags).
+* [GitHub Container Registry](https://github.com/ronin-chain/ronin/pkgs/container/ronin)
 
 To download the latest image for your node, follow these steps:
 
 1. In the `.env` file, set `NODE_IMAGE` to the following:
 
     ```bash
-    ghcr.io/axieinfinity/ronin:v2.8.2-0842591
+    ghcr.io/ronin-chain/ronin:v1.0.2-eaef5a2
     ```
 
 2. Save the changes.
