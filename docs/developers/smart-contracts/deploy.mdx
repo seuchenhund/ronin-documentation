@@ -43,18 +43,16 @@ In the `hardhat.config.js` file, add a `networks` object with the following code
 
 ```jsx title="hardhat.config.js"
 module.exports = {
-  solidity: "0.8.24",
+  solidity: "0.8.28",
   // highlight-start
   networks: {
     ronin: {
       chainId: 2020,
       url: "https://api.roninchain.com/rpc",
-      gasPrice: 20_000_000_000,
     },
     saigon: {
       chainId: 2021,
       url: "https://saigon-testnet.roninchain.com/rpc",
-      gasPrice: 20_000_000_000,
     },
   },
   // highlight-end
@@ -69,22 +67,21 @@ cover transaction gas fees.
 1. In the `hardhat.config.js` file, add a `namedAccounts` object with the following code:
    ```jsx title="hardhat.config.js"
    module.exports = {
-     solidity: "0.8.24",
-     // highlight-start
-     namedAccounts: {
-       deployer: "privatekey://<your deployer private key>",
-     },
-     // highlight-end
+     solidity: "0.8.28",
      networks: {
        ronin: {
          chainId: 2020,
          url: "https://api.roninchain.com/rpc",
-         gasPrice: 20_000_000_000,
+         // highlight-start
+         accounts:["0xYourPrivateKey"]
+         // highlight-end
        },
        saigon: {
          chainId: 2021,
          url: "https://saigon-testnet.roninchain.com/rpc",
-         gasPrice: 20_000_000_000,
+          // highlight-start
+         accounts:["0xYourPrivateKey"]
+         // highlight-end
        },
      },
    };
@@ -93,7 +90,7 @@ cover transaction gas fees.
    1. Open the extension, and at the top right corner, click the profile icon.
    2. Click **Manage**. You'll see a list of your accounts.
    3. Select the account from which you wish to deploy the contract, then click **View private key**, and then enter your password.
-3. Copy your private key and paste it in the `namedAccounts` object.
+3. Copy replace `0xYourPrivateKey` with your private key.
 4. Top up your Saigon testnet deployer account with RON to cover the gas fees using the [Ronin Faucet](https://faucet.roninchain.com/).
 
 :::info
@@ -129,14 +126,10 @@ By default, the Saigon testnet network doesn't appear in Ronin Wallet. To make i
 
 Now that you have set up the environment, you can deploy your smart contract on the Saigon testnet.
 
-:::warning Attention
-The Ronin EVM is currently comparable to the [London](https://ethereum.org/en/history/#london) fork of Ethereum. Please make sure that your contracts are compatible.
-:::
-
 1. To deploy your contract, run the following command:
 
    ```bash
-   yarn hardhat deploy --network saigon --gasprice 20000000000 --legacy
+   yarn hardhat deploy --network saigon
    ```
 
    Setting the `--gasprice` flag explicitly is required to work around the issue with the provider used by Hardhat ignoring the gas price set in `hardhat.config.js`. Make sure that you installed the required `hardhat-deploy` package in [Step 1](#step-1-install-hardhat-deploy).

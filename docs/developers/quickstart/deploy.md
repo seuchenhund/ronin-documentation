@@ -46,10 +46,6 @@ contract Counter {
 }
 ```
 
-:::warning Attention
-The Ronin EVM is currently comparable to the [London](https://ethereum.org/en/history/#london) fork of Ethereum. Please make sure that your contracts are compatible.
-:::
-
 ## 3. Configure Foundry for Ronin
 
 Edit `foundry.toml` to include:
@@ -106,7 +102,7 @@ forge build
 Use your private key to deploy the contract:
 
 ```sh
-forge create --rpc-url ronin --private-key 0xYourPrivateKey src/Counter.sol:Counter --legacy
+forge create --rpc-url ronin --private-key 0xYourPrivateKey src/Counter.sol:Counter
 ```
 
 This will return a contract address upon successful deployment.
@@ -124,7 +120,7 @@ cast call 0xContractAddress "count()(uint256)" --rpc-url ronin
 You can call the `add` function to increase the counter by a specified value:
 
 ```sh
-cast send 0xContractAddress "add(uint256)" 3 --rpc-url ronin --private-key 0xYourPrivateKey --legacy
+cast send 0xContractAddress "add(uint256)" 3 --rpc-url ronin --private-key 0xYourPrivateKey
 ```
 
 This will add 3 to the current counter value.

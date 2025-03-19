@@ -12,16 +12,16 @@ title: Ronin mainnet
 * Explorer: [app.roninchain.com](https://app.roninchain.com)
 * Genesis file: [mainnet.json](https://github.com/axieinfinity/ronin/blob/master/genesis/mainnet.json)
 * Block time: minimum 3 seconds
-* Number of confirmations to approve a transaction: 15 confirmations (approximately 45 seconds)
-* Gas price: 20 gwei
+* Block finality: [2 blocks](https://roninchain.com/blog/posts/introducing-fast-finality-on-ronin) (~6 seconds)
+* Gas price: base fee + 20 gwei
 
 ## Validator set
 
 * Total validators: 22
 * Governing Validators: 12
-* Standard Validators: 10
+* Standard Validators: 10 (Randomly selected every epoch from the Validator Candidates)
 
-For today's validator set, visit [RON Staking](https://app.roninchain.com/staking?tab=validator).
+For a list of all validators visit: [RON Staking](https://app.roninchain.com/staking?tab=validator).
 
 ## Genesis contracts
 

@@ -52,10 +52,10 @@ Where:
     additional_gas = 500_000
     ```
 
-    For example, if a request is sent with a callback gas amount of 250000 and the gas price of 20 GWEI, the total amount the contract must pay is as follows:
+    For example, if a request is sent with a callback gas amount of 250000 and the gas price of 22 GWEI (basefee * 2 + 20), the total amount the contract must pay is as follows:
 
     ```plaintext
-    fulfillment_gas_fee = 20 GWEI * (250_000 + 500_000) = 0.015 RON
+    fulfillment_gas_fee = 22 GWEI * (250_000 + 500_000) = 0.015 RON
     service_charge = 0.01 USD (equivalent to 0.0025 RON at an example exchange rate of $4 per RON)
     estimate_random_fee = service_charge + fulfillment_gas_fee = 0.0175 RON
     ```
@@ -203,7 +203,7 @@ This code requests a random number by calling the `requestRandomSeed` function i
 
 - The contract must have enough RON to pay the gas fee for oracle calling back. You can estimate the fee by calling `VRFCoordinator.estimateRequestRandomFee(callbackGasLimit, gasPrice)`.
 - The gas amount must be determined to call back to the method `rawFulfillRandomSeed`. The amount of gas depends on the method `_fulfillRandomSeed` in the next step.
-- The gas price must greater than or equal to 20 GWEI.
+- The gas price must greater than or equal to 21 GWEI. We recommend to use `basefee * 2 + 20` GWEI.
 
 The code then returns the request hash `reqHash` that you should store for fulfillment.
 
@@ -260,8 +260,8 @@ function callbackGaslimit() public pure returns (uint256) {
   return 500_000;
 }
 
-function gasPrice() public pure returns (uint256) {
-  return 20e9;
+function gasPrice() public view returns (uint256) {
+  return 20e9 + block.basefee * 2;
 }
 
 function _requestMintRandom(address user) internal {
@@ -311,8 +311,8 @@ contract MockNFT is ERC721Enumerable, VRFConsumer {
     return 500_000;
   }
 
-  function gasPrice() public pure returns (uint256) {
-    return 20e9;
+  function gasPrice() public view returns (uint256) {
+    return 20e9 + block.basefee * 2;
   }
 
   function _requestMintRandom(address user) internal {
