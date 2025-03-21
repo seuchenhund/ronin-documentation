@@ -460,6 +460,7 @@ const sidebars = {
             "developers/quickstart/list-collection",
           ]
         },
+        "developers/gold-standard",
         {
           type: "category",
           label: "Node setup",
