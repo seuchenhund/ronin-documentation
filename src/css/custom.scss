@@ -160,3 +160,22 @@ body {
 .ftContainer h2{
   margin-top: 24px;
 }
+
+.list-none{
+  list-style-type: none;
+}
+
+.headerIcon{
+  margin-right: 4px;
+  width: 32px;
+  height: 32px;
+}
+
+.table-of-contents .headerIcon{
+  display: none;
+}
+
+h2{
+  display: flex;
+  align-items: center;
+}
