@@ -158,3 +158,38 @@ Verify that the account address in the response matches your registered consensu
 ```bash
 node | Using account acf8bf98d1632e602d0b1761771049af21dd6597
 ```
+
+## Enabling Path-Based State Storage (PBSS)
+
+To enable the experimental Path-Based State Storage mode, make these changes:
+
+1. Remove existing chaindata
+
+```bash
+rm -rf ~/ronin/chaindata/data/ronin/*`
+```
+
+Important: You must remove all existing chaindata before using PBSS mode as it's not compatible with the traditional storage format.
+
+2. Update the .env File
+Add --state.scheme path to your RONIN_PARAMS:
+
+```bash
+RONIN_PARAMS=--http.api eth,net,web3,consortium --miner.gaslimit 30000000 --miner.gasreserve 10000000 --cache 4096 --discovery.dns enrtree://AIGOFYDZH6BGVVALVJLRPHSOYJ434MPFVVQFXJDXHW5ZYORPTGKUI@nodes.roninchain.com --state.scheme path
+```
+
+3. Update the docker-compose.yml File
+Add the STATE_SCHEME environment variable:
+```
+environment:
+  # Other environment variables...
+  - STATE_SCHEME=path
+```
+
+4. Start/Restart the node for applying the change:
+
+```bash
+cd ~/ronin/docker && docker-compose up -d
+```
+
+Note: PBSS mode is experimental and requires a full sync from genesis as snapshots are not yet supported for this mode.
