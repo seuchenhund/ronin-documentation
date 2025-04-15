@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-
-
 ---
 description: Set up and run an RPC node (non-validator node) on the Ronin mainnet using Docker.
 title: Setup
 ---
+
+import React, { useState } from 'react';
+import CodeBlock from '@theme/CodeBlock';
+
 
 ## Prerequisites
 
@@ -64,22 +65,80 @@ Install Docker Engine and the Docker Compose plugin:
       }
     </p>
 
-    <h3>3. Set up directories</h3>
-
-    <code>
-      mkdir -p ~/ronin/docker 
-      <br/>
-      cd ~/ronin
-    </code>
+    <h3>3. Configuration</h3>
+    <p>Set up the directories</p>
+    <CodeBlock language="bash">
+    {`mkdir -p ~/ronin/docker 
+cd ~/ronin`} 
+    </CodeBlock>
     <p>
       Create a directory for chain data:
     </p>
-    <code>
-      mkdir -p chaindata/data/ronin
-    <br/>
-    </code>
+    <CodeBlock language="bash">{`mkdir -p chaindata/data/ronin`}</CodeBlock>
 
+    <p>In the <code>docker</code> directory, create a <code>docker-compose.yml</code> file with the following configuration:</p>
 
+    <CodeBlock showLineNumbers>
+{`version: "3"
+services:
+  node:
+    image: \${NODE_IMAGE}
+    stop_grace_period: 5m
+    stop_signal: SIGINT
+    hostname: node
+    container_name: node
+    ports:
+      - 127.0.0.1:8545:8545
+      - 127.0.0.1:8546:8546
+      - 30303:30303
+      - 30303:30303/udp
+      - 6060:6060
+    volumes:
+      - ~/ronin/chaindata:/ronin
+    environment:
+      - SYNC_MODE=full
+      - PASSWORD=\${PASSWORD}
+      - NETWORK_ID=\${NETWORK_ID}
+      - RONIN_PARAMS=\${RONIN_PARAMS}
+      - VERBOSITY=\${VERBOSITY}
+      - MINE=\${MINE}
+      - GASPRICE=\${GASPRICE}
+      - ETHSTATS_ENDPOINT=\${INSTANCE_NAME}:\${CHAIN_STATS_WS_SECRET}@\${CHAIN_STATS_WS_SERVER}:443${(network === 1 ? `
+      - GENESIS_PATH=\${GENESIS_PATH}` : ``)}${(nodeType === 2 ? `
+      - PRIVATE_KEY=\${VALIDATOR_PRIVATE_KEY}
+      - BLS_PASSWORD=\${BLS_PASSWORD}
+      - BLS_PRIVATE_KEY=\${BLS_PRIVATE_KEY}
+      - BLS_AUTO_GENERATE=\${BLS_AUTO_GENERATE}
+      - ENABLE_FAST_FINALITY=\${ENABLE_FAST_FINALITY}
+      - ENABLE_FAST_FINALITY_SIGN=\${ENABLE_FAST_FINALITY_SIGN}
+      - BLS_SHOW_PRIVATE_KEY=\${BLS_SHOW_PRIVATE_KEY}
+      - GENERATE_BLS_PROOF=\${GENERATE_BLS_PROOF}` : ``)}`} 
+    </CodeBlock>
+    <p>This compose file defines the <code>node</code> service that pulls a Ronin node image from the GitHub Container Registry.</p>
+    <p>In the <code>docker</code> directory, create an <code>.env</code> file and add the following content, replacing the <code>&lt;...&gt;</code> placeholder values with your information: </p>
+    <CodeBlock showLineNumbers>
+{`# The name of your node that you want displayed on https://ronin-stats.roninchain.com/
+INSTANCE_NAME=<INSTANCE_NAME>
+
+# The latest version of the node's image as listed in https://docs.roninchain.com/validators/setup/upgrade-validator
+NODE_IMAGE=<NODE_IMAGE>
+
+# The password used to encrypt the node's private key file
+PASSWORD=<PASSWORD>
+
+MINE=false
+
+NETWORK_ID=2020
+GASPRICE=20000000000
+VERBOSITY=3${(nodeTypes === 1 ?
+  `CONFIG_PATH=config.mainnet.json` : ``
+)}
+
+CHAIN_STATS_WS_SECRET=WSyDMrhRBe111
+CHAIN_STATS_WS_SERVER=ronin-stats-ws.roninchain.com
+
+RONIN_PARAMS=--http.api eth,net,web3,consortium --txpool.pricelimit 20000000000 --txpool.nolocals --cache 4096 --discovery.dns enrtree://AIGOFYDZH6BGVVALVJLRPHSOYJ434MPFVVQFXJDXHW5ZYORPTGKUI@nodes.roninchain.com`}
+      </CodeBlock>
       <div style={{ marginTop: '20px', padding: '10px', border: '1px solid #ccc' }}>
         {nodeType === 0 ? (
           <p>This is the content for Option 1.</p>
