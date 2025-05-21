@@ -14,8 +14,6 @@ Install Docker Engine and the Docker Compose plugin:
 * [Docker Engine](https://docs.docker.com/engine/)
 * [Docker Compose](https://docs.docker.com/compose/)
 
-## Steps
-
 {(() => {
 
   const nodeTypes = ["Full node", "Archive node", "Validator node"];
@@ -23,6 +21,19 @@ Install Docker Engine and the Docker Compose plugin:
 
   const [nodeType, setNodeType] = useState(0);
   const [network, setNetwork] = useState(0);
+
+  const roninParams = [
+    [ //mainnet full,archive,validator
+      '--http.api eth,net,web3,consortium --txpool.pricelimit 20000000000 --txpool.nolocals --cache 4096 --discovery.dns enrtree://AIGOFYDZH6BGVVALVJLRPHSOYJ434MPFVVQFXJDXHW5ZYORPTGKUI@nodes.roninchain.com',
+      '--gcmode archive --http.api eth,net,web3 --txpool.pricelimit 20000000000 --txpool.nolocals --cache 4096 --discovery.dns enrtree://AIGOFYDZH6BGVVALVJLRPHSOYJ434MPFVVQFXJDXHW5ZYORPTGKUI@nodes.roninchain.com',
+      '--http.api eth,net,web3,consortium --miner.gaslimit 30000000 --miner.gasreserve 10000000 --cache 4096 --discovery.dns enrtree://AIGOFYDZH6BGVVALVJLRPHSOYJ434MPFVVQFXJDXHW5ZYORPTGKUI@nodes.roninchain.com'
+    ],
+    [ //testnet full,archive,validator
+      '--http.api eth,net,web3 --txpool.pricelimit 20000000000 --txpool.nolocals --discovery.dns enrtree://AJCNIAXQIPO55NW3QE2NUBBDMPYZDOQUCAEUS65NHQFMUUFES5KOW@saigon.nodes.roninchain.com',
+      '--gcmode archive --http.api eth,net,web3 --txpool.pricelimit 20000000000 --txpool.nolocals --discovery.dns enrtree://AJCNIAXQIPO55NW3QE2NUBBDMPYZDOQUCAEUS65NHQFMUUFES5KOW@saigon.nodes.roninchain.com',
+      '--http.api eth,net,web3,consortium --miner.gaslimit 30000000 --miner.gasreserve 10000000 --discovery.dns enrtree://AJCNIAXQIPO55NW3QE2NUBBDMPYZDOQUCAEUS65NHQFMUUFES5KOW@saigon.nodes.roninchain.com'
+    ]
+  ];
 
   const buttonStyle = {
     margin: '5px',
@@ -36,7 +47,7 @@ Install Docker Engine and the Docker Compose plugin:
 
   return (
     <div>
-    <h3>1. Choose your node type</h3>
+    <h2>Choose your node type</h2>
       <p>
         {
           nodeTypes.map((label,idx) => 
@@ -50,7 +61,7 @@ Install Docker Engine and the Docker Compose plugin:
         }
       </p>
 
-    <h3>2. Choose the network</h3>
+    <h2>Choose the network</h2>
 
      <p>
       {
@@ -65,19 +76,18 @@ Install Docker Engine and the Docker Compose plugin:
       }
     </p>
 
-    <h3>3. Configuration</h3>
-    <p>Set up the directories</p>
+    <h2>Configuration</h2>
+
+    <p>1. Set up the directories</p>
     <CodeBlock language="bash">
     {`mkdir -p ~/ronin/docker 
 cd ~/ronin`} 
     </CodeBlock>
-    <p>
-      Create a directory for chain data:
-    </p>
+
+    <p>Create a directory for chain data:</p>
     <CodeBlock language="bash">{`mkdir -p chaindata/data/ronin`}</CodeBlock>
 
-    <p>In the <code>docker</code> directory, create a <code>docker-compose.yml</code> file with the following configuration:</p>
-
+    <p>2. In the <code>docker</code> directory, create a <code>docker-compose.yml</code> file with the following configuration:</p>
     <CodeBlock showLineNumbers>
 {`version: "3"
 services:
@@ -115,7 +125,8 @@ services:
       - GENERATE_BLS_PROOF=\${GENERATE_BLS_PROOF}` : ``)}`} 
     </CodeBlock>
     <p>This compose file defines the <code>node</code> service that pulls a Ronin node image from the GitHub Container Registry.</p>
-    <p>In the <code>docker</code> directory, create an <code>.env</code> file and add the following content, replacing the <code>&lt;...&gt;</code> placeholder values with your information: </p>
+    
+    <p>3. In the <code>docker</code> directory, create an <code>.env</code> file and add the following content, replacing the <code>&lt;...&gt;</code> placeholder values with your information: </p>
     <CodeBlock showLineNumbers>
 {`# The name of your node that you want displayed on https://ronin-stats.roninchain.com/
 INSTANCE_NAME=<INSTANCE_NAME>
@@ -126,26 +137,68 @@ NODE_IMAGE=<NODE_IMAGE>
 # The password used to encrypt the node's private key file
 PASSWORD=<PASSWORD>
 
-MINE=false
+MINE=${(nodeType === 2 ?`true` : `false`)}
 
-NETWORK_ID=2020
 GASPRICE=20000000000
-VERBOSITY=3${(nodeTypes === 1 ?
-  `CONFIG_PATH=config.mainnet.json` : ``
+${(network === 1 ? `NETWORK_ID=2021
+CONFIG_PATH=config.testnet.json
+GENESIS_PATH=testnet.json
+DEPLOYMENT=test`: `NETWORK_ID=2020
+CONFIG_PATH=config.mainnet.json`
 )}
+VERBOSITY=3${(nodeType === 2 ? `
 
-CHAIN_STATS_WS_SECRET=WSyDMrhRBe111
+# Your ECDSA private key without the 0x prefix, see https://docs.roninchain.com/validators/setup/generate-keys#generate-an-ecdsa-key
+VALIDATOR_PRIVATE_KEY=<ECDSA_PRIVATE_KEY>
+
+# BLS Wallet features
+# Your BLS private key without the 0x prefix, see https://docs.roninchain.com/validators/setup/generate-keys#generate-a-bls-key
+BLS_PRIVATE_KEY=<BLS_PRIVATE_KEY>
+
+# The password used to encrypt the BLS private key file
+BLS_PASSWORD=<BLS_PASSWORD>
+
+# Whether to participate in the finality vote broadcast
+ENABLE_FAST_FINALITY=true
+
+# Whether to produce the finality vote
+ENABLE_FAST_FINALITY_SIGN=true
+
+# Whether to automatically generate BLS private key
+BLS_AUTO_GENERATE=false
+
+# Whether to show the raw BLS private key after decryption
+BLS_SHOW_PRIVATE_KEY=false` : ``)}
+
+CHAIN_STATS_WS_SECRET=${(network === 1 ?`xQj2MZPaN72` : `WSyDMrhRBe111`)}
 CHAIN_STATS_WS_SERVER=ronin-stats-ws.roninchain.com
 
-RONIN_PARAMS=--http.api eth,net,web3,consortium --txpool.pricelimit 20000000000 --txpool.nolocals --cache 4096 --discovery.dns enrtree://AIGOFYDZH6BGVVALVJLRPHSOYJ434MPFVVQFXJDXHW5ZYORPTGKUI@nodes.roninchain.com`}
+RONIN_PARAMS=${roninParams[network][nodeType]}`}
       </CodeBlock>
-      <div style={{ marginTop: '20px', padding: '10px', border: '1px solid #ccc' }}>
-        {nodeType === 0 ? (
-          <p>This is the content for Option 1.</p>
-        ) : (
-          <p>This is the content for Option 2.</p>
-        )}
-      </div>
+      {( !(network === 1 && nodeType === 1) ?
+      <>
+      <p>(Optional) Download the snapshot from the <a href="https://github.com/ronin-chain/ronin-snapshot">ronin-snapshot repo</a>:</p>
+      <CodeBlock language="bash">
+      {`cd ~/ronin/chaindata/data/ronin/
+wget -q -O - <snapshot URL from the README file in the repo> | tar -I zstd -xvf -`} 
+      </CodeBlock>
+      </> : null
+      )}
+
+    <p>4. Start the node:</p>
+    <CodeBlock language="bash">
+      {`cd ~/ronin/docker && docker-compose up -d`} 
+    </CodeBlock>
+    <p>This command pulls a Ronin node image and starts the service you defined.</p>
+   
+   <p>6. Review the log.</p>
+    <CodeBlock language="bash">
+      {`docker logs node -f --tail 100`} 
+    </CodeBlock>
+    <p>
+      7. After a few minutes, check the status of your node on the <a href="https://ronin-stats.roninchain.com/">Ronin Analytics</a> page{(network === 1 ? <>, the <strong>Testnet</strong> section</> : ``)}. 
+      If it's green, the node is connected and up to date with the network.
+    </p>
     </div>
   );
 })()}
