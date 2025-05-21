@@ -514,6 +514,7 @@ const sidebars = {
               ]
             },
             "developers/tools/ccip",
+            "developers/tools/the-graph",
             "developers/tools/vrf",
             "developers/tools/delegation",
             "developers/tools/faucet",

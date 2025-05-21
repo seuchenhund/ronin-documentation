@@ -1,10 +1,10 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-const math = require('remark-math');
-const katex = require('rehype-katex');
+import math from "remark-math"
+import katex from "rehype-katex"
 
-const lightCodeTheme = require('prism-react-renderer/themes/github')
-const darkCodeTheme = require('prism-react-renderer/themes/dracula')
+import lightCodeTheme from 'prism-react-renderer/themes/github/index.js';
+import darkCodeTheme from 'prism-react-renderer/themes/dracula/index.js';
 
 const currentYear = new Date().getFullYear()
 
