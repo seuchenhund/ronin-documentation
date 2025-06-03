@@ -469,6 +469,7 @@ const sidebars = {
             slug: "/developers/nodes",
           },
           items:[
+            "developers/nodes/requirements",
             "developers/nodes/setup",
             "developers/nodes/mainnet",
             "developers/nodes/mainnet-archive",
