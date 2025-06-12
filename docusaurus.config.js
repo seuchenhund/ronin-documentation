@@ -58,6 +58,42 @@ const config = {
           from: '/get-started',
           to: '/',
         },
+        {
+          from: '/developers/nodes/mainnet',
+          to: '/developers/nodes/setup',
+        },
+        {
+          from: '/developers/nodes/testnet',
+          to: '/developers/nodes/setup',
+        },
+        {
+          from: '/developers/nodes/mainnet-archive',
+          to: '/developers/nodes/setup',
+        },
+        {
+          from: '/developers/nodes/testnet-archive',
+          to: '/developers/nodes/setup',
+        },
+        {
+          from: '/protocol/validators/setup/mainnet/run-validator',
+          to: '/developers/nodes/setup',
+        },
+        {
+          from: '/protocol/validators/setup/mainnet/run-combined',
+          to: '/developers/nodes/setup',
+        },
+        {
+          from: '/protocol/validators/setup/testnet/run-combined',
+          to: '/developers/nodes/setup',
+        },
+        {
+          from: '/protocol/validators/setup/cli',
+          to: '/developers/nodes/build-from-source',
+        },
+        {
+          from: '/protocol/validators/setup/overview',
+          to: '/developers/nodes/setup',
+        },
       ],
       createRedirects(existingPath) {
         if (existingPath.startsWith('/protocol/delegators/')) {
@@ -191,7 +227,6 @@ const config = {
           {
             label: 'Basics',
             to: '/basics',
-            //target: '_blank',
           },
           {
             label: 'Protocol',
@@ -201,13 +236,11 @@ const config = {
             label: 'Developers',
             to: '/developers',
           },
-          // Blog
           {
             label: 'Blog',
             to: 'blog',
             position: 'right',
           },
-          // Search
           {
             type: 'search',
             position: 'right',

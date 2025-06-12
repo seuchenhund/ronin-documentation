@@ -236,129 +236,70 @@ const sidebars = {
               label: "Setup",
               link: {
                 type: "doc",
-                id: "protocol/validators/setup/overview",
+                id: "developers/nodes/setup",
               },
               items: [
+                // Become a validator
+                "protocol/validators/become-validator",
+                // Manage your account
                 {
                   type: "category",
-                  label: "Mainnet",
+                  label: "Manage validator account",
                   link: {
                     type: "generated-index",
-                    slug: "/protocol/validators/setup/mainnet",
+                    title: "Manage your validator account",
                     description:
-                      "Node installation guides for the Ronin mainnet.",
+                      "Guides for increasing or withdrawing your stake, claiming rewards, and managing your validator account.",
+                    slug: "/protocol/validators/manage",
                   },
                   items: [
-                    // Run a validator and bridge together
-                    "protocol/validators/setup/mainnet/run-combined",
-                    // Run a validator
-                    "protocol/validators/setup/mainnet/run-validator",
+                    // View activity
+                    "protocol/validators/manage/view-activity",
+                    // View analytics
+                    "protocol/validators/manage/view-analytics",
+                    // View profile details
+                    "protocol/validators/manage/view-profile",
+                    // Claim rewards
+                    "protocol/validators/manage/claim-rewards",
+                    // Increase or move stake
+                    "protocol/validators/manage/stake",
+                    // Add or change finality vote key
+                    "protocol/validators/manage/finality",
+                    // Add or change VRF key
+                    "protocol/validators/manage/vrf-key",
+                    // Change commission rate
+                    "protocol/validators/manage/commission",
+                    // Change admin address
+                    "protocol/validators/manage/addresses",
+                    // Schedule maintenance
+                    "protocol/validators/manage/maintenance",
+                    // Early exit maintenance
+                    "protocol/validators/manage/maintenance-exit",
+                    // Renounce validator role
+                    "protocol/validators/manage/renounce",
+                    // Request emergency exit
+                    "protocol/validators/manage/emergency-exit",
                   ],
                 },
+                // Slashing
+                "protocol/validators/slashing",
+                // Governance
                 {
                   type: "category",
-                  label: "Saigon testnet",
+                  label: "Governance",
                   link: {
-                    type: "generated-index",
-                    title: "Saigon testnet",
-                    description:
-                      "Node installation guides for the Saigon testnet.",
-                    slug: "/protocol/validators/setup/testnet",
+                    type: "doc",
+                    id: "protocol/validators/governance/overview",
                   },
                   items: [
-                    // Run a validator and bridge together
-                    "protocol/validators/setup/testnet/run-combined",
+                    // Create and vote on proposals
+                    "protocol/validators/governance/proposals",
                   ],
                 },
-                // Generate keys
-                "protocol/validators/setup/generate-keys",
-                // Install Ronin CLI
-                "protocol/validators/setup/cli",
-                // Latest version
-                "protocol/validators/setup/upgrade-validator",
-                // Latest version
-                "protocol/validators/setup/random-beacon",
-                // Clean data
-                "protocol/validators/setup/clean-data",
-                // Network parameters
-                {
-                  type: "category",
-                  label: "Network parameters",
-                  link: {
-                    type: "generated-index",
-                    title: "Network parameters",
-                    slug: "/protocol/validators/setup/parameters",
-                  },
-                  items: [
-                    // Ronin mainnet
-                    "protocol/validators/setup/parameters/mainnet",
-                    // Saigon testnet
-                    "protocol/validators/setup/parameters/testnet",
-                  ],
-                },
-                // Security hardening
-                "protocol/validators/setup/security",
+                // FAQ
+                "protocol/validators/faq",
               ],
             },
-            // Become a validator
-            "protocol/validators/become-validator",
-            // Manage your account
-            {
-              type: "category",
-              label: "Manage validator account",
-              link: {
-                type: "generated-index",
-                title: "Manage your validator account",
-                description:
-                  "Guides for increasing or withdrawing your stake, claiming rewards, and managing your validator account.",
-                slug: "/protocol/validators/manage",
-              },
-              items: [
-                // View activity
-                "protocol/validators/manage/view-activity",
-                // View analytics
-                "protocol/validators/manage/view-analytics",
-                // View profile details
-                "protocol/validators/manage/view-profile",
-                // Claim rewards
-                "protocol/validators/manage/claim-rewards",
-                // Increase or move stake
-                "protocol/validators/manage/stake",
-                // Add or change finality vote key
-                "protocol/validators/manage/finality",
-                // Add or change VRF key
-                "protocol/validators/manage/vrf-key",
-                // Change commission rate
-                "protocol/validators/manage/commission",
-                // Change admin address
-                "protocol/validators/manage/addresses",
-                // Schedule maintenance
-                "protocol/validators/manage/maintenance",
-                // Early exit maintenance
-                "protocol/validators/manage/maintenance-exit",
-                // Renounce validator role
-                "protocol/validators/manage/renounce",
-                // Request emergency exit
-                "protocol/validators/manage/emergency-exit",
-              ],
-            },
-            // Slashing
-            "protocol/validators/slashing",
-            // Governance
-            {
-              type: "category",
-              label: "Governance",
-              link: {
-                type: "doc",
-                id: "protocol/validators/governance/overview",
-              },
-              items: [
-                // Create and vote on proposals
-                "protocol/validators/governance/proposals",
-              ],
-            },
-            // FAQ
-            "protocol/validators/faq",
           ],
         },
         // Delegators
@@ -380,45 +321,6 @@ const sidebars = {
             "protocol/delegators/validators",
             // FAQ
             "protocol/delegators/faq",
-          ],
-        },
-
-        //Bridge Operators
-        {
-          type: "category",
-          label: "Bridge operators",
-          link: {
-            type: "doc",
-            id: "protocol/bridge-operators/index",
-          },
-          items: [
-            {
-              type: "category",
-              label: "Setup",
-              link: {
-                type: "doc",
-                id: "protocol/bridge-operators/setup/overview",
-              },
-              items: [
-                "protocol/bridge-operators/setup/run-bridge",
-                "protocol/bridge-operators/setup/upgrade-bridge",
-              ],
-            },
-            // Slashing
-            "protocol/bridge-operators/slashing",
-            // Governance
-            {
-              type: "category",
-              label: "Governance",
-              link: {
-                type: "doc",
-                id: "protocol/bridge-operators/governance/overview",
-              },
-              items: [
-                // Create and vote on proposals
-                "protocol/bridge-operators/governance/proposals",
-              ],
-            },
           ],
         },
       ],
@@ -471,11 +373,34 @@ const sidebars = {
           items:[
             "developers/nodes/requirements",
             "developers/nodes/setup",
-            "developers/nodes/mainnet",
-            "developers/nodes/mainnet-archive",
-            "developers/nodes/testnet",
-            "developers/nodes/testnet-archive",
+            "developers/nodes/build-from-source",
             "developers/nodes/upgrade-node-version",
+            // Generate keys
+            "protocol/validators/setup/generate-keys",
+            // Latest version
+            "protocol/validators/setup/upgrade-validator",
+            // Latest version
+            "protocol/validators/setup/random-beacon",
+            // Clean data
+            "protocol/validators/setup/clean-data",
+            // Network parameters
+            {
+              type: "category",
+              label: "Network parameters",
+              link: {
+                type: "generated-index",
+                title: "Network parameters",
+                slug: "/developers/nodes/parameters",
+              },
+              items: [
+                // Ronin mainnet
+                "protocol/validators/setup/parameters/mainnet",
+                // Saigon testnet
+                "protocol/validators/setup/parameters/testnet",
+              ],
+            },
+            // Security hardening
+            "protocol/validators/setup/security",
           ]
         },
         {

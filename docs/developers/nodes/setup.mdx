@@ -122,7 +122,8 @@ services:
       - ENABLE_FAST_FINALITY=\${ENABLE_FAST_FINALITY}
       - ENABLE_FAST_FINALITY_SIGN=\${ENABLE_FAST_FINALITY_SIGN}
       - BLS_SHOW_PRIVATE_KEY=\${BLS_SHOW_PRIVATE_KEY}
-      - GENERATE_BLS_PROOF=\${GENERATE_BLS_PROOF}` : ``)}`} 
+      - GENERATE_BLS_PROOF=\${GENERATE_BLS_PROOF}` : ``)}
+      - STATE_SCHEME=path`} 
     </CodeBlock>
     <p>This compose file defines the <code>node</code> service that pulls a Ronin node image from the GitHub Container Registry.</p>
     
@@ -221,7 +222,6 @@ Add --state.scheme path to your RONIN_PARAMS:
 ```bash
 RONIN_PARAMS=--http.api eth,net,web3,consortium --miner.gaslimit 30000000 --miner.gasreserve 10000000 --cache 4096 --discovery.dns enrtree://AIGOFYDZH6BGVVALVJLRPHSOYJ434MPFVVQFXJDXHW5ZYORPTGKUI@nodes.roninchain.com --state.scheme path
 ```
-
 
 3. Update the docker-compose.yml File
 Add the STATE_SCHEME environment variable:

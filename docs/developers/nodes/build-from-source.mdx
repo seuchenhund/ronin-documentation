@@ -1,0 +1,74 @@
+---
+description: Build and run a Ronin node from source using the CLI.
+title: Build from Source
+---
+
+## Overview
+
+This guide demonstrates how to compile a Ronin binary on your own using the Ronin CLI (command-line interface), instead of running a packed binary from Docker. With the Ronin CLI, you can run a full node (default) or an archive node (retaining all historical state).
+
+## Prerequisites
+
+* Golang 1.20 or later (follow the instructions at [https://go.dev/doc/install](https://go.dev/doc/install))
+* C compiler
+
+## Steps
+
+1. Download Ronin source:
+   ```bash
+   mkdir -p ~/roninchain && cd ~/roninchain
+   git clone git@github.com:axieinfinity/ronin.git
+   ```
+
+2. Build the binary:
+   ```bash
+   cd ronin
+   make ronin
+   ```
+
+3. Add the binary to PATH:
+   ```bash
+   export PATH=$PATH:./build/bin/
+   ```
+
+4. Initialize the genesis block:
+
+   For mainnet:
+   ```bash
+   ronin init --datadir ~/roninchain/data genesis/mainnet.json
+   ```
+
+   For testnet:
+   ```bash
+   ronin init --datadir ~/roninchain/data genesis/testnet.json
+   ```
+
+5. Run the node:
+
+   For mainnet:
+   ```bash
+   ronin --http.api eth,net,web3,consortium --networkid 2020 --discovery.dns enrtree://AIGOFYDZH6BGVVALVJLRPHSOYJ434MPFVVQFXJDXHW5ZYORPTGKUI@nodes.roninchain.com --datadir ~/roninchain/data --port 30303 --http --http.corsdomain '*' --http.addr 0.0.0.0 --http.port 8545 --http.vhosts '*' --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins '*'
+   ```
+
+   For testnet:
+   ```bash
+   ronin --http.api eth,net,web3,consortium --networkid 2021 --discovery.dns enrtree://AJCNIAXQIPO55NW3QE2NUBBDMPYZDOQUCAEUS65NHQFMUUFES5KOW@saigon.nodes.roninchain.com --datadir ~/roninchain/data --port 30303 --http --http.corsdomain '*' --http.addr 0.0.0.0 --http.port 8545 --http.vhosts '*' --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins '*'
+   ```
+
+   To run an archive node, add these flags:
+   ```bash
+   --syncmode full --gcmode archive
+   ```
+
+## Configuration
+
+Instead of passing numerous flags to the `ronin` binary, you can use a configuration file:
+
+```bash
+ronin --config /path/to/your_config.toml
+```
+
+To export your existing configuration:
+```bash
+ronin --your-favourite-flags dumpconfig
+``` 
